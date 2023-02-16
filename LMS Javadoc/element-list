@@ -1,0 +1,10 @@
+Authentication
+Authentication.Model
+Course
+Course.Model
+Message
+Message.Model
+User
+User.Model
+User.Model.Student
+User.Model.TeachingTeam
