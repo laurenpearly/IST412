@@ -4,6 +4,7 @@ Course
 Course.Model
 Message
 Message.Model
+testharness
 User
 User.Model
 User.Model.Student
