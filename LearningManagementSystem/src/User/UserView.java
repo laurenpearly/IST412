@@ -5,12 +5,6 @@ import Course.Model.Course;
 import java.util.ArrayList;
 
 public class UserView {
-    int userID;
-    String userFirstName;
-    String userLastName;
-    ArrayList<Course> userCourses;
-    String grades;
-    String courseSubmission;
 
     /**
      * Constructor for Controller
@@ -62,6 +56,6 @@ public class UserView {
      * @param grades Grades for the courses
      */
     public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
-        System.out.println("Output from User.UserView.viewGrades(): userID: " + userID);
+        System.out.println("Output from User.UserView.viewGrades(): userID: " + userID + " grades: " + grades);
     }
 }

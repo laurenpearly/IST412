@@ -19,7 +19,7 @@ public class Student extends User {
      */
     public Student(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
         super(userID, userLoginName, userPassword, userFirstName, userLastName);
-        System.out.println("Output from User.Student: Student Created!");
+        this.grades = "A";
     }
 
     /**
@@ -40,7 +40,7 @@ public class Student extends User {
                 " courseSubmission: " + courseSubmission);
     }
 
-    public void setGrades(String grades) {
-        this.grades = grades;
+    public String getGrades() {
+        return grades;
     }
 }

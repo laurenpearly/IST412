@@ -2,9 +2,10 @@ package User;
 
 import Authentication.AuthController;
 import Course.CourseController;
-import Course.Model.Course;
 import Message.MessageController;
 import User.Model.Student.Student;
+import User.Model.TeachingTeam.Instructor;
+import User.Model.TeachingTeam.TeachingTeam;
 import User.Model.User;
 
 import java.util.ArrayList;
@@ -106,44 +107,51 @@ public class UserController {
      */
     public void viewGrades(Student student) {
         System.out.println("Passing through User.UserController.viewGrades()...");
+        userView.viewGrades(student.getUserID(), student.getUserCourses(), student.getGrades());
     }
 
     /**
      * Used to assign a user to teach a course
+     * @param teachingTeam TeachingTeam person teaching the course
      * @param courseID ID of course to be taught
-     * @param userID ID of user to teach
      */
-    public void teachCourse(int courseID, int userID) {
+    public void teachCourse(TeachingTeam teachingTeam, int courseID) {
         System.out.println("Passing through User.UserController.teachCourse()...");
+        teachingTeam.teachCourse(courseID);
     }
 
     /**
      * Grade assignments for a course
+     * @param teachingTeam User that is the grader
      * @param courseID ID of course to grade
-     * @param userCourses Assignments can be obtained in this list
+     * @param assignmentID Assignment being graded
      */
-    public void gradeAssignment(int courseID, ArrayList<Course> userCourses) {
+    public void gradeAssignment(TeachingTeam teachingTeam, int courseID, int assignmentID) {
         System.out.println("Passing through User.UserController.gradeAssignment()...");
+        teachingTeam.gradeAssignment(courseID, assignmentID);
     }
 
     /**
      * Creates a course
+     * @param instructor Instructor creating the course
      * @param courseID ID of course to be made
      * @param courseName Name of course
-     * @param courseDetails Details of course
      */
-    public void createCourse(int courseID, String courseName, String courseDetails) {
+    public void createCourse(Instructor instructor, int courseID, String courseName) {
         System.out.println("Passing through User.UserController.createCourse()...");
+        instructor.createCourse(courseID, courseName);
     }
 
     /**
      * Creates an assignment for a course
+     * @param instructor Instructor creating the assignment
      * @param courseID ID of course to create assignment for
      * @param assignmentID ID of assignment being made
      * @param assignmentName Name of assignment
      * @param assignmentDetails Details of assignment
      */
-    public void createAssignment(int courseID, int assignmentID, String assignmentName, String assignmentDetails) {
+    public void createAssignment(Instructor instructor, int courseID, int assignmentID, String assignmentName, String assignmentDetails) {
         System.out.println("Passing through User.UserController.createAssignment()...");
+        instructor.createAssignment(courseID, assignmentID, assignmentName, assignmentDetails);
     }
 }
