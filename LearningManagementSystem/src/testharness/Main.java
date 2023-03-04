@@ -1,6 +1,7 @@
 package testharness;
 
 import User.Model.Student.Student;
+import User.UserController;
 
 public class Main {
     /**
@@ -8,15 +9,16 @@ public class Main {
      * @param args main method
      */
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        UserController userCtrl = new UserController();
         //add tests here!!!
-        studentTests();
+        studentTests(userCtrl);
     }
 
-    public static void studentTests() {
-        System.out.println("Output from studentTests(): Creating student...");
+    public static void studentTests(UserController userCtrl) {
+        System.out.println("Input from studentTests(): Creating student...");
         Student student = new Student(0, "student", "password",
                 "Erik", "Student");
-
+        System.out.println("Input from studentTests(): Authenticating student...");
+        userCtrl.logIn(student.getUserLoginName(), student.getUserPassword());
     }
 }

@@ -25,6 +25,11 @@ public class Student extends User {
      */
     public Student(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
         super(userID, userLoginName, userPassword, userFirstName, userLastName);
+        this.userID = userID;
+        this.userLoginName = userLoginName;
+        this.userPassword = userPassword;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
         System.out.println("Output from User.Student: Student Created!");
     }
 
@@ -54,5 +59,17 @@ public class Student extends User {
      */
     public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
 
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public String getUserLoginName() {
+        return userLoginName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
     }
 }

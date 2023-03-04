@@ -17,6 +17,7 @@ public class AuthController {
      * @param userPassword User's input password.
      */
     public void authenticate(String userName, String userPassword) {
-        System.out.println("Output from Authentication.Controller.authenticate()");
+        System.out.println("Output from Authentication.Controller.authenticate(): username: " + userName +
+                " password: " + userPassword);
     }
 }
