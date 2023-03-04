@@ -22,10 +22,10 @@ public class Student extends User {
      * @param userPassword Student Password
      * @param userFirstName Student first name
      * @param userLastName Student last name
-     * @param userCourses Student courses
      */
-    public Student(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName, ArrayList<Course> userCourses) {
+    public Student(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
         super(userID, userLoginName, userPassword, userFirstName, userLastName);
+        System.out.println("Output from User.Student: Student Created!");
     }
 
     /**
