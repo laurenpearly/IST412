@@ -59,4 +59,13 @@ public class CourseController {
     public void assignTeachingTeam(int userID, int courseID) {
 
     }
+
+    /**
+     * Enrolls student to course.
+     * @param userID ID of user to be added.
+     * @param courseID ID of course to be added to.
+     */
+    public void enroll(int userID, int courseID) {
+        System.out.println("Output from Course.CourseController.enroll(): userID: " + userID + " courseID: " + courseID );
+    }
 }

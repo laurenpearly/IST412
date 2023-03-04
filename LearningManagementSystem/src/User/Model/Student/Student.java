@@ -72,4 +72,12 @@ public class Student extends User {
     public String getUserPassword() {
         return userPassword;
     }
+
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
 }

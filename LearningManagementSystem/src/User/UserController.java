@@ -1,11 +1,17 @@
 package User;
 
 import Authentication.AuthController;
+import Course.CourseController;
 import Course.Model.Course;
+import Message.MessageController;
 
 import java.util.ArrayList;
 
 public class UserController {
+    UserView userView;
+    AuthController authCtrl;
+    CourseController courseCtrl;
+    MessageController messageCtrl;
     int userID;
     String userLoginName;
     String userPassword;
@@ -14,12 +20,14 @@ public class UserController {
     ArrayList<Course> userCourses;
     String grades;
     String courseSubmission;
-    UserView userView;
 
     /**
      * Constructor for Controller
      */
     public UserController() {
+        authCtrl = new AuthController();
+        courseCtrl = new CourseController();
+        messageCtrl = new MessageController();
         userView = new UserView();
     }
 
@@ -65,8 +73,8 @@ public class UserController {
      * @param userPassword Password.
      */
     public void logIn(String userLoginName, String userPassword) {
-        AuthController auth = new AuthController();
-        auth.authenticate(userLoginName, userPassword);
+        System.out.println("Passing through UserController.logIn()...");
+        authCtrl.authenticate(userLoginName, userPassword);
     }
 
     /**
@@ -75,7 +83,8 @@ public class UserController {
      * @param courseID ID of course to enroll in
      */
     public void enroll(int userID, int courseID) {
-
+        System.out.println("Passing through UserController.enroll()...");
+        courseCtrl.enroll(userID, courseID);
     }
 
     /**
