@@ -28,8 +28,9 @@ public class Main {
         userCtrl.logIn(student.getUserLoginName(), student.getUserPassword());
         System.out.println();
         System.out.println("Input from studentTests(): Enrolling in course...");
-        userCtrl.enroll(0, 0);
+        userCtrl.enroll(student, 0);
         System.out.println();
-        System.out.println("Input from studentTests(): Enrolling in course...");
+        System.out.println("Input from studentTests(): Viewing Student...");
+        //userCtrl.viewUser();
     }
 }

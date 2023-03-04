@@ -26,7 +26,7 @@ public class UserView {
      * @param userCourses User courses.
      */
     public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
-
+        System.out.println("Output from User.UserView: userFirstName: " + userFirstName);
     }
 
     /**

@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public class CourseController {
 
-    ArrayList courses = new ArrayList<Course>();
+    ArrayList courses;
 
     /**
      * Constructor for Controller
      */
     public CourseController() {
-
+        courses = new ArrayList<Course>();
     }
 
     /**

@@ -60,12 +60,15 @@ public class User {
 
     }
 
-    /**
-     * User logs in.
-     * @param userLoginName Username.
-     * @param userPassword Password.
-     */
-    public void logIn(String userLoginName, String userPassword) {
+    public int getUserID() {
+        return userID;
+    }
 
+    public String getUserLoginName() {
+        return userLoginName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
     }
 }

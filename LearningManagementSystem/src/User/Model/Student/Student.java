@@ -35,11 +35,10 @@ public class Student extends User {
 
     /**
      * Enroll in a course
-     * @param userID ID of user
      * @param courseID ID of course to enroll in
      */
-    public void enroll(int userID, int courseID) {
-
+    public void enroll(int courseID) {
+        System.out.println("Output from User.Model.Student.Student.enroll(): courseID: " + courseID);
     }
 
     /**
@@ -48,7 +47,7 @@ public class Student extends User {
      * @param courseSubmission Course to submit to
      */
     public void submitAssignment(int userID, String courseSubmission) {
-
+        this.courseSubmission = courseSubmission;
     }
 
     /**
@@ -59,25 +58,5 @@ public class Student extends User {
      */
     public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
 
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public String getUserLoginName() {
-        return userLoginName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public String getUserFirstName() {
-        return userFirstName;
-    }
-
-    public String getUserLastName() {
-        return userLastName;
     }
 }

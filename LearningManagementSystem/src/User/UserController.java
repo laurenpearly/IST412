@@ -4,6 +4,7 @@ import Authentication.AuthController;
 import Course.CourseController;
 import Course.Model.Course;
 import Message.MessageController;
+import User.Model.Student.Student;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public class UserController {
     AuthController authCtrl;
     CourseController courseCtrl;
     MessageController messageCtrl;
+    ArrayList studentList;
 
     /**
      * Constructor for Controller
@@ -21,6 +23,7 @@ public class UserController {
         courseCtrl = new CourseController();
         messageCtrl = new MessageController();
         userView = new UserView();
+        studentList = new ArrayList<Student>();
     }
 
     /**
@@ -71,12 +74,13 @@ public class UserController {
 
     /**
      * Enroll in a course
-     * @param userID ID of user
+     * @param student Student to enroll
      * @param courseID ID of course to enroll in
      */
-    public void enroll(int userID, int courseID) {
+    public void enroll(Student student, int courseID) {
         System.out.println("Passing through UserController.enroll()...");
-        courseCtrl.enroll(userID, courseID);
+        student.enroll(courseID);
+        courseCtrl.enroll(student.getUserID(), courseID);
     }
 
     /**
