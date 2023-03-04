@@ -26,7 +26,7 @@ public class UserView {
      * @param userCourses User courses.
      */
     public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
-        System.out.println("Output from User.UserView: userFirstName: " + userFirstName);
+        System.out.println("Output from User.UserView.viewUser(): userFirstName: " + userFirstName);
     }
 
     /**
@@ -34,8 +34,8 @@ public class UserView {
      * @param userID ID of user.
      * @param userCourses List of user's courses.
      */
-    public void viewCourses(String userID, ArrayList<Course> userCourses) {
-
+    public void viewCourses(int userID, ArrayList<Course> userCourses) {
+        System.out.println("Output from User.UserView.viewCourses(): userID: " + userID);
     }
 
     /**
@@ -43,16 +43,16 @@ public class UserView {
      * @param userID ID of user.
      * @param userCourses List of courses, a course ID will be selected.
      */
-    public void viewAssignments(String userID, ArrayList<Course> userCourses) {
-
+    public void viewAssignments(int userID, ArrayList<Course> userCourses) {
+        System.out.println("Output from User.UserView.viewAssignments(): userID: " + userID);
     }
 
     /**
      * View a user's messages.
      * @param userID ID of user.
      */
-    public void viewMessages(String userID) {
-
+    public void viewMessages(int userID) {
+        System.out.println("Output from User.UserView.viewMessages(): userID: " + userID);
     }
 
     /**
@@ -62,6 +62,6 @@ public class UserView {
      * @param grades Grades for the courses
      */
     public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
-
+        System.out.println("Output from User.UserView.viewGrades(): userID: " + userID);
     }
 }

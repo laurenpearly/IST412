@@ -9,7 +9,6 @@ import User.Model.TeachingTeam.TeachingTeam;
 import java.util.ArrayList;
 
 public class CourseController {
-
     ArrayList courses;
 
     /**
@@ -60,5 +59,9 @@ public class CourseController {
      */
     public void enroll(int userID, int courseID) {
         System.out.println("Output from Course.CourseController.enroll(): userID: " + userID + " courseID: " + courseID );
+    }
+
+    public void submitAssignment(int userID, int courseID, int assignmentID, String submission) {
+        System.out.println("Output from Course.CourseController.submitAssignment(): submission: " + submission);
     }
 }

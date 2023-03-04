@@ -5,6 +5,7 @@ import Course.CourseController;
 import Course.Model.Course;
 import Message.MessageController;
 import User.Model.Student.Student;
+import User.Model.User;
 
 import java.util.ArrayList;
 
@@ -28,38 +29,41 @@ public class UserController {
 
     /**
      * View user details.
-     * @param userFirstName User first name.
-     * @param userLastName User last name.
-     * @param userCourses User courses.
+     * @param student Student being viewed.
      */
-    public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
-        userView.viewUser(userFirstName, userLastName, userCourses);
+    public void viewUser(Student student) {
+        System.out.println("Passing through UserController.viewUser()...");
+        student.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
+        userView.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
     }
 
     /**
      * View a user's courses.
-     * @param userID ID of user.
-     * @param userCourses List of user's courses.
+     * @param user User whose courses are being viewed
      */
-    public void viewCourses(String userID, ArrayList<Course> userCourses) {
-        userView.viewCourses(userID, userCourses);
+    public void viewCourses(User user) {
+        System.out.println("Passing through UserController.viewCourses()...");
+        userView.viewCourses(user.getUserID(), user.getUserCourses());
     }
 
     /**
      * View assignments for a course.
-     * @param userID ID of user.
-     * @param userCourses List of courses, a course ID will be selected.
+     * @param user User whose assignments are being viewed.
+     * @param courseID Course ID whose assignments are being viewed.
      */
-    public void viewAssignments(String userID, ArrayList<Course> userCourses) {
-        userView.viewAssignments(userID, userCourses);
+    public void viewAssignments(User user, int courseID) {
+        System.out.println("Passing through UserController.viewAssignments()...");
+        user.viewAssignments(courseID);
+        userView.viewAssignments(user.getUserID(), user.getUserCourses());
     }
 
     /**
      * View a user's messages.
-     * @param userID ID of user.
+     * @param user User whose messages are being viewed.
      */
-    public void viewMessages(String userID) {
-        userView.viewMessages(userID);
+    public void viewMessages(User user) {
+        System.out.println("Passing through UserController.viewMessages()...");
+        userView.viewMessages(user.getUserID());
     }
 
     /**
@@ -85,21 +89,23 @@ public class UserController {
 
     /**
      * Submit an assignment to a course
-     * @param userID ID of user
-     * @param courseSubmission Course to submit to
+     * @param student Student who is submitting
+     * @param courseID Course being submitted to
+     * @param assignmentID Assignment being submitted
+     * @param courseSubmission Submission
      */
-    public void submitAssignment(int userID, String courseSubmission) {
-
+    public void submitAssignment(Student student, int courseID, int assignmentID, String courseSubmission) {
+        System.out.println("Passing through User.UserController.submitAssignment()...");
+        student.submitAssignment(assignmentID, courseSubmission);
+        courseCtrl.submitAssignment(student.getUserID(), courseID, assignmentID, courseSubmission);
     }
 
     /**
      * View grades
-     * @param userID ID of user
-     * @param userCourses Courses a user is enrolled in
-     * @param grades Grades for the courses
+     * @param student Student whose grades are being viewed
      */
-    public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
-
+    public void viewGrades(Student student) {
+        System.out.println("Passing through User.UserController.viewGrades()...");
     }
 
     /**
@@ -108,7 +114,7 @@ public class UserController {
      * @param userID ID of user to teach
      */
     public void teachCourse(int courseID, int userID) {
-
+        System.out.println("Passing through User.UserController.teachCourse()...");
     }
 
     /**
@@ -117,7 +123,7 @@ public class UserController {
      * @param userCourses Assignments can be obtained in this list
      */
     public void gradeAssignment(int courseID, ArrayList<Course> userCourses) {
-
+        System.out.println("Passing through User.UserController.gradeAssignment()...");
     }
 
     /**
@@ -127,7 +133,7 @@ public class UserController {
      * @param courseDetails Details of course
      */
     public void createCourse(int courseID, String courseName, String courseDetails) {
-
+        System.out.println("Passing through User.UserController.createCourse()...");
     }
 
     /**
@@ -138,6 +144,6 @@ public class UserController {
      * @param assignmentDetails Details of assignment
      */
     public void createAssignment(int courseID, int assignmentID, String assignmentName, String assignmentDetails) {
-
+        System.out.println("Passing through User.UserController.createAssignment()...");
     }
 }

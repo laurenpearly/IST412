@@ -51,6 +51,10 @@ public class Course {
      * @param userID ID of user to be added.
      */
     public void enroll(int userID) {
+        System.out.println("Output from Course.Model.Course.enroll(): userID: " + userID);
+    }
 
+    public int getCourseID() {
+        return courseID;
     }
 }

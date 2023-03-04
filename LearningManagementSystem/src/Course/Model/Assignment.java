@@ -22,14 +22,7 @@ public class Assignment {
         this.courseID = courseID;
     }
 
-    /**
-     * Given the assignment ID, shows the name, details, and ID of the course it is assigned to.
-     * @param assignmentID The ID given to the Assignment.
-     * @param assignmentName Name given to the Assignment.
-     * @param assignmentDetails Details for the Assignment.
-     * @param courseID The ID of the Course the Assignment is assigned to.
-     */
-    public void viewAssignment(int assignmentID, String assignmentName, String assignmentDetails, int courseID) {
-
+    public int getAssignmentID() {
+        return assignmentID;
     }
 }

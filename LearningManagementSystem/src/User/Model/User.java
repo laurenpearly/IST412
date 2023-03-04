@@ -21,7 +21,11 @@ public class User {
      * @param userLastName Last name of user.
      */
     public User(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
-
+        this.userID = userID;
+        this.userLoginName = userLoginName;
+        this.userPassword = userPassword;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
     }
 
     /**
@@ -31,33 +35,15 @@ public class User {
      * @param userCourses User courses.
      */
     public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
-
-    }
-
-    /**
-     * View a user's courses.
-     * @param userID ID of user.
-     * @param userCourses List of user's courses.
-     */
-    public void viewCourses(String userID, ArrayList<Course> userCourses) {
-
+        System.out.println("Output from User.User.viewUser(): userFirstName: " + userFirstName);
     }
 
     /**
      * View assignments for a course.
-     * @param userID ID of user.
-     * @param userCourses List of courses, a course ID will be selected.
+     * @param courseID Course ID whose assignments are being viewed
      */
-    public void viewAssignments(String userID, ArrayList<Course> userCourses) {
-
-    }
-
-    /**
-     * View a user's messages.
-     * @param userID ID of user.
-     */
-    public void viewMessages(String userID) {
-
+    public void viewAssignments(int courseID) {
+        System.out.println("Output from User.User.viewAssignment(): courseID: " + courseID);
     }
 
     public int getUserID() {
@@ -70,5 +56,17 @@ public class User {
 
     public String getUserPassword() {
         return userPassword;
+    }
+
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+    public ArrayList<Course> getUserCourses() {
+        return userCourses;
     }
 }
