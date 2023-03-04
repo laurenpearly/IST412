@@ -1,6 +1,7 @@
 package Course;
 
 import Course.Model.Assignment;
+import Course.Model.Course;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.Instructor;
 import User.Model.TeachingTeam.TeachingTeam;
@@ -8,16 +9,8 @@ import User.Model.TeachingTeam.TeachingTeam;
 import java.util.ArrayList;
 
 public class CourseController {
-    String courseID;
-    String courseName;
-    ArrayList<Assignment> courseAssignments;
-    String courseSubmissions;
-    ArrayList<Student> studentList;
-    ArrayList<TeachingTeam> teachingTeamList;
-    ArrayList<Instructor> instructorList;
-    int assignmentID;
-    String assignmentName;
-    String assignmentDetails;
+
+    ArrayList courses = new ArrayList<Course>();
 
     /**
      * Constructor for Controller

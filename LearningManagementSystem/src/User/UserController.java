@@ -12,14 +12,6 @@ public class UserController {
     AuthController authCtrl;
     CourseController courseCtrl;
     MessageController messageCtrl;
-    int userID;
-    String userLoginName;
-    String userPassword;
-    String userFirstName;
-    String userLastName;
-    ArrayList<Course> userCourses;
-    String grades;
-    String courseSubmission;
 
     /**
      * Constructor for Controller

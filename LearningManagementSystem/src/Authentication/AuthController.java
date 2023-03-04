@@ -1,8 +1,6 @@
 package Authentication;
 
 public class AuthController {
-    String userName;
-    String userPassword;
 
     /**
      * Constructor for Authentication Controller.

@@ -29,5 +29,7 @@ public class Main {
         System.out.println();
         System.out.println("Input from studentTests(): Enrolling in course...");
         userCtrl.enroll(0, 0);
+        System.out.println();
+        System.out.println("Input from studentTests(): Enrolling in course...");
     }
 }

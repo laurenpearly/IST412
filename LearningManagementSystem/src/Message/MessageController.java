@@ -3,9 +3,6 @@ package Message;
 import User.Model.User;
 
 public class MessageController {
-    String messageContent;
-    User sender;
-    User receiver;
 
     /**
      * Constructor for Controller.
