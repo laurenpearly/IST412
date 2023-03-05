@@ -1,12 +1,19 @@
 package Authentication;
 
+    import Authentication.Model.Authentication;
+    import Authentication.AuthView;
+
 public class AuthController {
+    
+    Authentication authentication;
+    AuthView authView;
 
     /**
      * Constructor for Authentication Controller.
      */
     public AuthController() {
-        
+        authentication = new Authentication();
+        authView = new AuthView();
     }
 
     /**
