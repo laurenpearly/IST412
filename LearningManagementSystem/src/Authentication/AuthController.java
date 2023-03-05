@@ -6,7 +6,7 @@ public class AuthController {
      * Constructor for Authentication Controller.
      */
     public AuthController() {
-
+        
     }
 
     /**

@@ -39,7 +39,35 @@ public class Authentication {
      * Authenticates a user at login.
      * @param users List of users and their IDs, Usernames, Passwords, First Names, and Last Names.
      */
-    public void authenticate(ArrayList<String> users) {
+    public void authenticate(ArrayList<String> users, String userName, String userPaswword) {
+        String temp = "";
+        boolean done = false;
 
+        while(!done)
+        {
+            System.out.println("Please enter your username: ");
+            userName = sc.nextLine();
+            System.out.println("Please enter your password: ");
+            userPassword = sc.nextLine();
+
+            for (int i = 0; i < users.size();) {
+                temp = users.get(i);
+
+                if (temp.equals(userName) && i % 2 == 0) {          // If it the username is correct and an even number (all usernames are even numbers)
+                    if(users.get(i + 1).equals(userPassword)) {     // The userPassword for the userName is the next element in the arrayList
+                        System.out.println("Access granted.");
+                        done = true;
+                    }
+                    else {
+                        break;                                      // Goes back to entering the userName and userPassword
+                    }
+                }
+                else {
+                    i++;                                            // Continues searching arrayList for the userName
+                }
+            }
+
+            System.out.println("The username or password entered was incorrect.");
+        }
     }
 }
