@@ -1,5 +1,6 @@
 package testharness;
 
+import Authentication.AuthController; 
 import Course.Model.Assignment;
 import Course.Model.Course;
 import User.Model.Student.Student;
@@ -26,11 +27,24 @@ public class Main {
 
         //controllers to call from tests here
         UserController userCtrl = new UserController();
+        AuthController authCtrl = new AuthController();
 
         //add tests here!!!
         instructorTests(userCtrl, instructor, course, assignment);
         teachingTeamTests(userCtrl, teachingTeam, course, assignment);
         studentTests(userCtrl, student, course, assignment);
+
+        authenticationTests(authCtrl, instructor, teachingTeam, student);
+    }
+
+    public static void authenticationTests(AuthController authCtrl, Instructor instructor, TeachingTeam teachingTeam, Student student) {       // zac
+        System.out.println();
+        System.out.println("Input from authenticationTest(): Autheticating usernames and passwords");       // instance username/passwords or txt file?
+        authCtrl.authenticate(instructor.getUserLoginName(), instructor.getUserPassword());
+        authCtrl.authenticate(teachingTeam.getUserLoginName(), teachingTeam.getUserPassword());
+        authCtrl.authenticate(student.getUserLoginName(), student.getUserPassword());
+        System.out.println();
+        System.out.println("Authentication tests done!");
     }
 
     public static void instructorTests(UserController userCtrl, Instructor instructor, Course course, Assignment assignment) {
