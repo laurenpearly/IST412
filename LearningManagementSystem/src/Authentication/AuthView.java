@@ -17,6 +17,7 @@ public class AuthView {
      * @param userPassword User's input password.
      */
     public void display(String userName, String userPassword) {
-
+        System.out.println("Output from Authentication.AuthView(): " + "UserName: " + userName);
+        System.out.println("Output from Authentication.AuthView(): " + "UserPassword: " + userPassword);
     }
 }
