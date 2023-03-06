@@ -9,13 +9,17 @@ import User.Model.TeachingTeam.TeachingTeam;
 import java.util.ArrayList;
 
 public class CourseController {
-    ArrayList courses;
+    ArrayList<Course> courses;
+    CourseView view;
+    Course model;
 
     /**
      * Constructor for Controller
      */
     public CourseController() {
         courses = new ArrayList<Course>();
+        this.model = model;
+        this.view = view;
     }
 
     /**
@@ -40,7 +44,7 @@ public class CourseController {
      * @param instructorList List of instructors in course.
      */
     public void viewCourse(int courseID, String courseName, ArrayList<Assignment> courseAssignments, String courseSubmissions, ArrayList<Student> studentList, ArrayList<TeachingTeam> teachingTeamList, ArrayList<Instructor> instructorList) {
-
+        view.viewCourse(courseID,courseName,courseAssignments,courseSubmissions,studentList,teachingTeamList,instructorList);
     }
 
     /**
@@ -49,7 +53,13 @@ public class CourseController {
      * @param courseID ID of course to be added to.
      */
     public void assignTeachingTeam(int userID, int courseID) {
-
+        for (Course course : courses) {
+            if (course.getCourseID()==courseID) {
+                course.assignTeachingTeam(userID);
+                System.out.println("Teaching Team successfully assigned!");
+                //System.out.println("Teaching Team successfully assigned: " + course.getTeachingTeamList().get(userID));
+            }
+        }
     }
 
     /**
@@ -58,10 +68,19 @@ public class CourseController {
      * @param courseID ID of course to be added to.
      */
     public void enroll(int userID, int courseID) {
-        System.out.println("Output from Course.CourseController.enroll(): userID: " + userID + " courseID: " + courseID );
+        for (Course course : courses) {
+            if (course.getCourseID() == courseID) {
+                course.enroll(userID);
+                System.out.println("Student successfully enrolled!");
+                //System.out.println("Student successfully enrolled! " + course.getTeachingTeamList().get(userID));
+            }
+        }
     }
 
-    public void submitAssignment(int userID, int courseID, int assignmentID, String submission) {
-        System.out.println("Output from Course.CourseController.submitAssignment(): submission: " + submission);
+    public void submitAssignment(int userID, int courseID, int assignmentID, String courseSubmission) {
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 }

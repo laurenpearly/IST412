@@ -1,6 +1,7 @@
 package testharness;
 
-import Authentication.AuthController; 
+import Authentication.AuthController;
+import Course.CourseController;
 import Course.Model.Assignment;
 import Course.Model.Course;
 import User.Model.Student.Student;
@@ -20,6 +21,7 @@ public class Main {
         Assignment assignment = new Assignment(28, "testAssignment", "details", 24);
         TeachingTeam teachingTeam = new TeachingTeam(1, "teachteam", "tpassword",
                 "Sara", "TeachTeam");
+        course.getTeachingTeamList().add(teachingTeam);
         Instructor instructor = new Instructor(2, "instructor", "ipassword",
                 "John", "Instructor");
         Student student = new Student(0, "student", "spassword",
@@ -28,13 +30,24 @@ public class Main {
         //controllers to call from tests here
         UserController userCtrl = new UserController();
         AuthController authCtrl = new AuthController();
+        CourseController corsCtrl = new CourseController();
 
         //add tests here!!!
         instructorTests(userCtrl, instructor, course, assignment);
         teachingTeamTests(userCtrl, teachingTeam, course, assignment);
         studentTests(userCtrl, student, course, assignment);
-
         authenticationTests(authCtrl, instructor, teachingTeam, student);
+        courseTests(corsCtrl, course, assignment);
+    }
+
+    public static void courseTests(CourseController corsCtrl, Course course, Assignment assignment){
+        corsCtrl.getCourses().add(course);
+        System.out.println("Running Tests");
+        corsCtrl.assignTeachingTeam(1, course.getCourseID());
+        corsCtrl.enroll(0, course.getCourseID());
+        corsCtrl.submitAssignment(0, 0, 0, null);
+        System.out.println();
+        System.out.println("Courses tests done!");
     }
 
     public static void authenticationTests(AuthController authCtrl, Instructor instructor, TeachingTeam teachingTeam, Student student) {       // zac

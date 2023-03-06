@@ -34,7 +34,11 @@ public class CourseView {
      * @param courseID The ID of the Course the Assignment is assigned to.
      */
     public void viewAssignment(int assignmentID, String assignmentName, String assignmentDetails, int courseID) {
-
+        System.out.println("Output from CourseView");
+        System.out.println("Assignment ID: " + assignmentID);
+        System.out.println("Assignment Name: " + assignmentName);
+        System.out.println("Assignment Details: " + assignmentDetails);
+        System.out.println("Course ID: " + courseID);
     }
 
     /**
@@ -48,6 +52,13 @@ public class CourseView {
      * @param instructorList List of instructors in course.
      */
     public void viewCourse(int courseID, String courseName, ArrayList<Assignment> courseAssignments, String courseSubmissions, ArrayList<Student> studentList, ArrayList<TeachingTeam> teachingTeamList, ArrayList<Instructor> instructorList) {
-
+        System.out.println("Output from CourseView");
+        System.out.println("Course ID: " + courseID);
+        System.out.println("Course Name: " + courseName);
+        System.out.println("Course Assignments: " + courseAssignments);
+        System.out.println("Course Submissions: " + courseSubmissions);
+        System.out.println("Student List: " + studentList);
+        System.out.println("Teaching TeamList: " + teachingTeamList);
+        System.out.println("Instructor List: " + instructorList);
     }
 }

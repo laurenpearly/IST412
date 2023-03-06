@@ -6,6 +6,7 @@ import User.Model.User;
 import java.util.ArrayList;
 
 public class TeachingTeam extends User {
+    int userID;
 
     /**
      * Constructor for teaching team
@@ -17,6 +18,7 @@ public class TeachingTeam extends User {
      */
     public TeachingTeam(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
         super(userID, userLoginName, userPassword, userFirstName, userLastName);
+        this.userID = userID;
     }
 
     /**
@@ -35,5 +37,9 @@ public class TeachingTeam extends User {
     public void gradeAssignment(int courseID, int assignmentID) {
         System.out.println("Output from User.Model.TeachingTeam.TeachingTeam.gradeAssignment(): courseID: " +
                 courseID + " assignmentID: " + assignmentID);
+    }
+
+    public int getUserID() {
+        return userID;
     }
 }

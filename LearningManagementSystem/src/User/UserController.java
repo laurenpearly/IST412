@@ -15,7 +15,7 @@ public class UserController {
     AuthController authCtrl;
     CourseController courseCtrl;
     MessageController messageCtrl;
-    ArrayList studentList;
+    ArrayList<Student> studentList;
 
     /**
      * Constructor for Controller

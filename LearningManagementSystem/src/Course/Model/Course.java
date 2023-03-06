@@ -22,20 +22,8 @@ public class Course {
     public Course(int courseID, String courseName) {
         this.courseID = courseID;
         this.courseName = courseName;
-    }
-
-    /**
-     * Displays course and its info.
-     * @param courseID ID for course.
-     * @param courseName Name for course.
-     * @param courseAssignments Assignments in course.
-     * @param courseSubmissions Submissions for course.
-     * @param studentList List of students in course.
-     * @param teachingTeamList List of teaching team members in course.
-     * @param instructorList List of instructors in course.
-     */
-    public void viewCourse(int courseID, String courseName, ArrayList<Assignment> courseAssignments, String courseSubmissions, ArrayList<Student> studentList, ArrayList<TeachingTeam> teachingTeamList, ArrayList<Instructor> instructorList) {
-
+        this.teachingTeamList = new ArrayList<>();
+        this.studentList = new ArrayList<>();
     }
 
     /**
@@ -43,7 +31,13 @@ public class Course {
      * @param userID ID of user to be added.
      */
     public void assignTeachingTeam(int userID) {
-
+        System.out.println("Entered assignTeachingTeam function in Course.java");
+        for (TeachingTeam teach : teachingTeamList) {
+            if (teach.getUserID()==userID) {
+                this.teachingTeamList.add(teach);
+                break;
+            }
+        }
     }
 
     /**
@@ -51,10 +45,19 @@ public class Course {
      * @param userID ID of user to be added.
      */
     public void enroll(int userID) {
+        for (Student student : studentList) {
+            if (student.getUserID()==userID) {
+                this.studentList.add(student);
+            }
+        }
         System.out.println("Output from Course.Model.Course.enroll(): userID: " + userID);
     }
 
     public int getCourseID() {
         return courseID;
+    }
+
+    public ArrayList<TeachingTeam> getTeachingTeamList() {
+        return teachingTeamList;
     }
 }
