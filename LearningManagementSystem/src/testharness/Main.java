@@ -8,6 +8,7 @@ import User.Model.TeachingTeam.Instructor;
 import User.Model.TeachingTeam.TeachingTeam;
 import User.Model.User;
 import User.UserController;
+import Message.Model.Message;
 
 public class Main {
     /**
@@ -24,6 +25,7 @@ public class Main {
                 "John", "Instructor");
         Student student = new Student(0, "student", "spassword",
                 "Erik", "Student");
+        Message message = new Message("Test message", student, instructor);
 
         //controllers to call from tests here
         UserController userCtrl = new UserController();
@@ -33,7 +35,7 @@ public class Main {
         instructorTests(userCtrl, instructor, course, assignment);
         teachingTeamTests(userCtrl, teachingTeam, course, assignment);
         studentTests(userCtrl, student, course, assignment);
-
+        messageTest(message, student, instructor);
         authenticationTests(authCtrl, instructor, teachingTeam, student);
     }
 
@@ -45,6 +47,16 @@ public class Main {
         authCtrl.authenticate(student.getUserLoginName(), student.getUserPassword());
         System.out.println();
         System.out.println("Authentication tests done!");
+    }
+
+    public static void messageTest(Message message, Student student, Instructor instructor) {
+        String test = "testing";
+        System.out.println();
+        System.out.println("Sending message");
+        message.sendMessage(test, student, instructor);
+        System.out.println();
+        System.out.println("Viewing message");
+        message.viewMessage(test, student);
     }
 
     public static void instructorTests(UserController userCtrl, Instructor instructor, Course course, Assignment assignment) {
@@ -112,4 +124,5 @@ public class Main {
         System.out.println("Student tests done!");
         System.out.println();
     }
+
 }
