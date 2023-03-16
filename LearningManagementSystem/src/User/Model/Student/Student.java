@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Student extends User {
     String grades;
     String courseSubmission;
-    int userID;
+    //int userID;
 
     /**
      * Constructor for student
@@ -21,7 +21,6 @@ public class Student extends User {
     public Student(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
         super(userID, userLoginName, userPassword, userFirstName, userLastName);
         this.grades = "A";
-        this.userID = userID;
     }
 
     /**
@@ -44,9 +43,5 @@ public class Student extends User {
 
     public String getGrades() {
         return grades;
-    }
-
-    public int getUserID() {
-        return userID;
     }
 }
