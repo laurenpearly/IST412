@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class User {
     int userID;
+    String userType;
     String userLoginName;
     String userPassword;
     String userFirstName;
