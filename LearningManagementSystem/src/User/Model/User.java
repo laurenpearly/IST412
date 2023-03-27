@@ -27,6 +27,7 @@ public class User {
         this.userPassword = userPassword;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
+        this.userCourses = new ArrayList<>();
     }
 
     /**

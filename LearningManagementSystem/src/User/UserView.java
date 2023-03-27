@@ -1,26 +1,43 @@
 package User;
 
 import Course.Model.Course;
+import User.Model.User;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class UserView {
 
-    /**
-     * Constructor for Controller
-     */
-    public UserView() {
+    private UserController cntl;
+    JFrame userFrame;
+    JFrame courseFrame;
 
+    /**
+     * Constructor for View
+     */
+    public UserView(UserController cntl) {
+        this.cntl = cntl;
     }
 
     /**
      * View user details.
-     * @param userFirstName User first name.
-     * @param userLastName User last name.
-     * @param userCourses User courses.
+     * @param user User being viewed
      */
-    public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
-        System.out.println("Output from User.UserView.viewUser(): userFirstName: " + userFirstName);
+    public void viewUser(User user) {
+        System.out.println("Output from User.UserView.viewUser(): userFirstName: " + user.getUserFirstName());
+        userFrame = new JFrame("View User");
+        userFrame.setVisible(true);
+        userFrame.setSize(800, 400);
+        userFrame.setLayout(new BoxLayout(userFrame.getContentPane(), BoxLayout.Y_AXIS));
+        userFrame.setLocationRelativeTo(null);
+        userFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel viewUserPanel = new JPanel();
+        JButton assignments = new JButton("View Courses");
+        viewUserPanel.add(assignments);
+        userFrame.add(viewUserPanel);
+        assignments.addActionListener(event -> {
+            viewCourses(user.getUserID(), cntl.viewCourses(user));
+        });
     }
 
     /**
@@ -30,6 +47,12 @@ public class UserView {
      */
     public void viewCourses(int userID, ArrayList<Course> userCourses) {
         System.out.println("Output from User.UserView.viewCourses(): userID: " + userID);
+        courseFrame = new JFrame("Courses");
+        courseFrame.setVisible(true);
+        courseFrame.setSize(800, 400);
+        courseFrame.setLocationRelativeTo(userFrame);
+        courseFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
     /**

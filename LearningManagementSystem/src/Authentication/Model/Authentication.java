@@ -16,7 +16,7 @@ public class Authentication {
      */
     public Authentication() {
         try{
-        File userInfo = new File("D:\\IST412\\LearningManagementSystem\\src\\Authentication\\userInfo.txt");   
+        File userInfo = new File("userInfo.txt");
         Scanner sc = new Scanner(userInfo);
         
         while (sc.hasNextLine()){

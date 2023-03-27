@@ -2,6 +2,7 @@ package User;
 
 import Authentication.AuthController;
 import Course.CourseController;
+import Course.Model.Course;
 import Message.MessageController;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.Instructor;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class UserController {
     UserView userView;
-    AuthController authCtrl;
+    //AuthController authCtrl;
     CourseController courseCtrl;
     MessageController messageCtrl;
     ArrayList<Student> studentList;
@@ -21,10 +22,10 @@ public class UserController {
      * Constructor for Controller
      */
     public UserController() {
-        authCtrl = new AuthController();
+        //authCtrl = new AuthController();
         courseCtrl = new CourseController();
         messageCtrl = new MessageController();
-        userView = new UserView();
+        userView = new UserView(this);
         studentList = new ArrayList<Student>();
     }
 
@@ -35,16 +36,16 @@ public class UserController {
     public void viewUser(Student student) {
         System.out.println("Passing through UserController.viewUser()...");
         student.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
-        userView.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
+        userView.viewUser(student);
     }
 
     /**
      * View a user's courses.
      * @param user User whose courses are being viewed
      */
-    public void viewCourses(User user) {
+    public ArrayList<Course> viewCourses(User user) {
         System.out.println("Passing through UserController.viewCourses()...");
-        userView.viewCourses(user.getUserID(), user.getUserCourses());
+        return user.getUserCourses();
     }
 
     /**
@@ -74,7 +75,7 @@ public class UserController {
      */
     public void logIn(String userLoginName, String userPassword) {
         System.out.println("Passing through UserController.logIn()...");
-        authCtrl.authenticate(userLoginName, userPassword);
+        //authCtrl.authenticate(userLoginName, userPassword);
     }
 
     /**
