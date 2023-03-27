@@ -2,6 +2,7 @@ package User;
 
 import Authentication.AuthController;
 import Course.CourseController;
+import Course.Model.Assignment;
 import Course.Model.Course;
 import Message.MessageController;
 import User.Model.Student.Student;
@@ -51,13 +52,12 @@ public class UserController {
 
     /**
      * View assignments for a course.
-     * @param user User whose assignments are being viewed.
-     * @param course Course whose assignments are being viewed.
+     * @param courseID Course whose assignments are being viewed.
      */
-    public void viewAssignments(User user, Course course) {
+    public ArrayList<Assignment> viewAssignments(int courseID) {
         System.out.println("Passing through UserController.viewAssignments()...");
-        //user.viewAssignments(courseID);
-        userView.viewAssignments(user.getUserID(), course);
+        ArrayList<Assignment> assignments = new ArrayList<>(courseCtrl.getAssignments(courseID));
+        return assignments;
     }
 
     /**

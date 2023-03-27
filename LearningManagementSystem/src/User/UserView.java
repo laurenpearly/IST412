@@ -1,5 +1,6 @@
 package User;
 
+import Course.Model.Assignment;
 import Course.Model.Course;
 import User.Model.User;
 
@@ -55,7 +56,7 @@ public class UserView {
         for (Course course : userCourses) {
             JButton btn = new JButton(course.getCourseName());
             btn.addActionListener(event -> {
-                viewAssignments(0, course);
+                viewAssignments(course, cntl.viewAssignments(course.getCourseID()));
             });
             courseButtons.add(btn);
         }
@@ -65,10 +66,10 @@ public class UserView {
 
     /**
      * View assignments for a course.
-     * @param courseID ID of course.
+     * @param course Course.
      */
-    public void viewAssignments(int courseID, Course course) {
-        System.out.println("Output from User.UserView.viewAssignments(): userID: " + course.getCourseName());
+    public void viewAssignments(Course course, ArrayList<Assignment> assignments) {
+        System.out.println("Output from User.UserView.viewAssignments(): coursename: " + course.getCourseName());
     }
 
     /**

@@ -98,8 +98,8 @@ public class CourseController {
         return userCourses;
     }
 
-    public void addCourses(Course course) {
-        courses.add(course);
-        System.out.println(courses.size());
+    public ArrayList<Assignment> getAssignments(int courseID) {
+        ArrayList<Assignment> assignments = new ArrayList<>();
+        return assignments;
     }
 }
