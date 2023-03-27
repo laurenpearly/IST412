@@ -57,6 +57,10 @@ public class Course {
         return courseID;
     }
 
+    public String getCourseName() {
+        return courseName;
+    }
+
     public ArrayList<TeachingTeam> getTeachingTeamList() {
         return teachingTeamList;
     }

@@ -11,7 +11,7 @@ public class User {
     String userPassword;
     String userFirstName;
     String userLastName;
-    ArrayList<Course> userCourses;
+    ArrayList<Integer> userCourses;
 
     /**
      * Constructor for base user of system.
@@ -36,9 +36,9 @@ public class User {
      * @param userLastName User last name.
      * @param userCourses User courses.
      */
-    public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
+    /*public void viewUser(String userFirstName, String userLastName, ArrayList<Course> userCourses) {
         System.out.println("Output from User.User.viewUser(): userFirstName: " + userFirstName);
-    }
+    }*/
 
     /**
      * View assignments for a course.
@@ -68,7 +68,7 @@ public class User {
         return userLastName;
     }
 
-    public ArrayList<Course> getUserCourses() {
+    public ArrayList<Integer> getUserCourses() {
         return userCourses;
     }
 }

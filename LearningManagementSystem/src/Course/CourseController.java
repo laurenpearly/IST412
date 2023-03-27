@@ -18,6 +18,12 @@ public class CourseController {
      */
     public CourseController() {
         courses = new ArrayList<Course>();
+        Course test = new Course(24,"test");
+        Course math = new Course(45, "math");
+        Course science = new Course(33, "science");
+        courses.add(test);
+        courses.add(math);
+        courses.add(science);
         this.model = model;
         this.view = view;
     }
@@ -80,7 +86,20 @@ public class CourseController {
     public void submitAssignment(int userID, int courseID, int assignmentID, String courseSubmission) {
     }
 
-    public ArrayList<Course> getCourses() {
-        return courses;
+    public ArrayList<Course> getCourses(ArrayList<Integer> courseIds) {
+        ArrayList<Course> userCourses = new ArrayList<>();
+        for (Integer i : courseIds) {
+            for (Course c : courses) {
+                if (i == c.getCourseID()) {
+                    userCourses.add(c);
+                }
+            }
+        }
+        return userCourses;
+    }
+
+    public void addCourses(Course course) {
+        courses.add(course);
+        System.out.println(courses.size());
     }
 }

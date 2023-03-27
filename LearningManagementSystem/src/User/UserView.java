@@ -4,6 +4,7 @@ import Course.Model.Course;
 import User.Model.User;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class UserView {
@@ -36,32 +37,38 @@ public class UserView {
         viewUserPanel.add(assignments);
         userFrame.add(viewUserPanel);
         assignments.addActionListener(event -> {
-            viewCourses(user.getUserID(), cntl.viewCourses(user));
+            viewCourses(cntl.viewCourses(user));
         });
     }
 
     /**
      * View a user's courses.
-     * @param userID ID of user.
      * @param userCourses List of user's courses.
      */
-    public void viewCourses(int userID, ArrayList<Course> userCourses) {
-        System.out.println("Output from User.UserView.viewCourses(): userID: " + userID);
+    public void viewCourses(ArrayList<Course> userCourses) {
         courseFrame = new JFrame("Courses");
         courseFrame.setVisible(true);
         courseFrame.setSize(800, 400);
         courseFrame.setLocationRelativeTo(userFrame);
         courseFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel courseButtons = new JPanel();
+        for (Course course : userCourses) {
+            JButton btn = new JButton(course.getCourseName());
+            btn.addActionListener(event -> {
+                viewAssignments(0, course);
+            });
+            courseButtons.add(btn);
+        }
+        courseFrame.add(courseButtons);
 
     }
 
     /**
      * View assignments for a course.
-     * @param userID ID of user.
-     * @param userCourses List of courses, a course ID will be selected.
+     * @param courseID ID of course.
      */
-    public void viewAssignments(int userID, ArrayList<Course> userCourses) {
-        System.out.println("Output from User.UserView.viewAssignments(): userID: " + userID);
+    public void viewAssignments(int courseID, Course course) {
+        System.out.println("Output from User.UserView.viewAssignments(): userID: " + course.getCourseName());
     }
 
     /**

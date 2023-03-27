@@ -29,11 +29,14 @@ public class Main {
                 "Erik", "Student");
         Message message = new Message("Test message", student, instructor);
 
-        student.getUserCourses().add(course);
         //controllers to call from tests here
+        CourseController corsCtrl = new CourseController();
         UserController userCtrl = new UserController();
         //AuthController authCtrl = new AuthController();
-        CourseController corsCtrl = new CourseController();
+
+        //corsCtrl.addCourses(course);
+        student.getUserCourses().add(24);
+        student.getUserCourses().add(33);
 
         userCtrl.viewUser(student);
         /*//add tests here!!!
@@ -45,8 +48,9 @@ public class Main {
         courseTests(corsCtrl, course, assignment);*/
     }
 
+    /*
     public static void courseTests(CourseController corsCtrl, Course course, Assignment assignment){
-        corsCtrl.getCourses().add(course);
+        //corsCtrl.getCourses().add(course);
         System.out.println("Running Tests");
         corsCtrl.assignTeachingTeam(1, course.getCourseID());
         corsCtrl.enroll(0, course.getCourseID());
@@ -139,6 +143,6 @@ public class Main {
         System.out.println();
         System.out.println("Student tests done!");
         System.out.println();
-    }
+    }*/
 
 }

@@ -35,7 +35,7 @@ public class UserController {
      */
     public void viewUser(Student student) {
         System.out.println("Passing through UserController.viewUser()...");
-        student.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
+        //student.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
         userView.viewUser(student);
     }
 
@@ -45,18 +45,19 @@ public class UserController {
      */
     public ArrayList<Course> viewCourses(User user) {
         System.out.println("Passing through UserController.viewCourses()...");
-        return user.getUserCourses();
+        ArrayList<Course> courses = new ArrayList<>(courseCtrl.getCourses(user.getUserCourses()));
+        return courses;
     }
 
     /**
      * View assignments for a course.
      * @param user User whose assignments are being viewed.
-     * @param courseID Course ID whose assignments are being viewed.
+     * @param course Course whose assignments are being viewed.
      */
-    public void viewAssignments(User user, int courseID) {
+    public void viewAssignments(User user, Course course) {
         System.out.println("Passing through UserController.viewAssignments()...");
-        user.viewAssignments(courseID);
-        userView.viewAssignments(user.getUserID(), user.getUserCourses());
+        //user.viewAssignments(courseID);
+        userView.viewAssignments(user.getUserID(), course);
     }
 
     /**
@@ -108,7 +109,7 @@ public class UserController {
      */
     public void viewGrades(Student student) {
         System.out.println("Passing through User.UserController.viewGrades()...");
-        userView.viewGrades(student.getUserID(), student.getUserCourses(), student.getGrades());
+        //userView.viewGrades(student.getUserID(), student.getUserCourses(), student.getGrades());
     }
 
     /**
