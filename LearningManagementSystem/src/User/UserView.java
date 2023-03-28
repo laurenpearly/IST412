@@ -5,6 +5,7 @@ import Course.Model.Course;
 import User.Model.User;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class UserView {
     private UserController cntl;
     JFrame userFrame;
     JFrame courseFrame;
+    JFrame assignmentsFrame;
 
     /**
      * Constructor for View
@@ -69,11 +71,37 @@ public class UserView {
      * @param course Course.
      */
     public void viewAssignments(Course course, ArrayList<Assignment> userAssignments) {
-        System.out.println("Output from User.UserView.viewAssignments(): coursename: " + course.getCourseName());
-        System.out.println("assignments");
-        for (Assignment assignment : userAssignments) {
-            System.out.println("assignment: " + assignment.getAssignmentName());
+        assignmentsFrame = new JFrame(course.getCourseName() + " Assignments");
+        assignmentsFrame.setVisible(true);
+        assignmentsFrame.setSize(800, 400);
+        assignmentsFrame.setLocationRelativeTo(courseFrame);
+        assignmentsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel assingmentPanel = new JPanel();
+
+        String headers[] = { "Name", "Description"};
+        String data[][] = new String[userAssignments.size()][2];
+
+        for (int i = 0; i < userAssignments.size(); i ++){
+            data[i][0] = userAssignments.get(i).getAssignmentName();
+            data[i][1] = userAssignments.get(i).getAssignmentDetails();
         }
+
+        JTable assignmentsTable = new JTable();
+        DefaultTableModel dtm = new DefaultTableModel(data, headers);
+        assignmentsTable.setModel(dtm);
+
+        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+        if (defaults.get("Table.alternateRowColor") == null)
+            defaults.put("Table.alternateRowColor", new Color(210, 210, 210));
+
+        JButton back = new JButton("Back");
+        back.addActionListener(event -> {
+            assignmentsFrame.dispose();
+        });
+
+        assingmentPanel.add(new JScrollPane(assignmentsTable));
+        assingmentPanel.add(back);
+        assignmentsFrame.add(assingmentPanel);
     }
 
     /**
