@@ -13,6 +13,7 @@ public class AuthController {
      */
     public AuthController() {
         authentication = new Authentication();
+        authentication.authentication();
         authView = new AuthView();
     }
 

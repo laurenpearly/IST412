@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Authentication {
+
+    //object for making singleton
+    private static Authentication obj;
     Scanner sc = new Scanner("userInfo.txt");
     ArrayList<String> users = new ArrayList<String>();
     String userName;
@@ -15,21 +18,31 @@ public class Authentication {
      * Builds the user ArrayList from a txt file for use in program.
      */
     public Authentication() {
+        //don't put anything in here to force getInstance() to enforce this class as a singleton
+    }
+
+    //to enforce singleton
+    public static Authentication getInstance()
+    {
+        return obj;
+    }
+
+    public void authentication() {
         try{
-        File userInfo = new File("userInfo.txt");
-        Scanner sc = new Scanner(userInfo);
-        
-        while (sc.hasNextLine()){
-            String accountInfo = sc.nextLine();
-            String[] str = new String[2];
-            str = accountInfo.split(", ");
+            File userInfo = new File("userInfo.txt");
+            Scanner sc = new Scanner(userInfo);
 
-            users.add(str[0]);  // userName (even numbers)
-            users.add(str[1]);  // userPassword (odd numbers)
+            while (sc.hasNextLine()){
+                String accountInfo = sc.nextLine();
+                String[] str = new String[2];
+                str = accountInfo.split(", ");
 
-            str = null;         // Empties temp list
-        }
-        sc.close();
+                users.add(str[0]);  // userName (even numbers)
+                users.add(str[1]);  // userPassword (odd numbers)
+
+                str = null;         // Empties temp list
+            }
+            sc.close();
         } catch (Exception ex){
             ex.printStackTrace();
         }

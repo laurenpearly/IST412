@@ -10,7 +10,7 @@
 
 ### Object-Oriented Design Patterns
 
-- **Singleton:** Implemeted in the authentication package, specifically in the AuthController and Authentication model, to ensure only one Authenticate object is used in the program.
+- **Singleton:** Implemeted in the Authentication model class to ensure only one Authenticate object is used in the program.
 - **Observer:** intert details of where implemented
 - **State:** intert details of where implemented
 - **Composite Structure:** intert details of where implemented
