@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class CourseController {
     ArrayList<Course> courses;
+    ArrayList<Assignment> assignments;
     CourseView view;
     Course model;
 
@@ -17,13 +18,20 @@ public class CourseController {
      * Constructor for Controller
      */
     public CourseController() {
-        courses = new ArrayList<Course>();
+        courses = new ArrayList<>();
+        assignments = new ArrayList<>();
         Course test = new Course(24,"test");
         Course math = new Course(45, "math");
         Course science = new Course(33, "science");
         courses.add(test);
         courses.add(math);
         courses.add(science);
+        Assignment testAssign = new Assignment(28, "testAssignment", "details", 24);
+        Assignment testAssign2 = new Assignment(20, "testAssignment2", "details again", 24);
+        Assignment scienceAssign = new Assignment(28, "science assign", "wow", 33);
+        assignments.add(testAssign);
+        assignments.add(testAssign2);
+        assignments.add(scienceAssign);
         this.model = model;
         this.view = view;
     }
@@ -99,7 +107,12 @@ public class CourseController {
     }
 
     public ArrayList<Assignment> getAssignments(int courseID) {
-        ArrayList<Assignment> assignments = new ArrayList<>();
-        return assignments;
+        ArrayList<Assignment> userAssignments = new ArrayList<>();
+        for (Assignment a : assignments) {
+            if (courseID == a.getCourseID()) {
+                userAssignments.add(a);
+            }
+        }
+        return userAssignments;
     }
 }

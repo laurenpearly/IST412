@@ -25,4 +25,16 @@ public class Assignment {
     public int getAssignmentID() {
         return assignmentID;
     }
+
+    public String getAssignmentName() {
+        return assignmentName;
+    }
+
+    public String getAssignmentDetails() {
+        return assignmentDetails;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
 }

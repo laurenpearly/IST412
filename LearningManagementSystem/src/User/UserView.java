@@ -68,8 +68,12 @@ public class UserView {
      * View assignments for a course.
      * @param course Course.
      */
-    public void viewAssignments(Course course, ArrayList<Assignment> assignments) {
+    public void viewAssignments(Course course, ArrayList<Assignment> userAssignments) {
         System.out.println("Output from User.UserView.viewAssignments(): coursename: " + course.getCourseName());
+        System.out.println("assignments");
+        for (Assignment assignment : userAssignments) {
+            System.out.println("assignment: " + assignment.getAssignmentName());
+        }
     }
 
     /**
