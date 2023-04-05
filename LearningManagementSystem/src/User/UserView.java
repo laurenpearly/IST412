@@ -76,7 +76,7 @@ public class UserView {
         assignmentsFrame.setSize(800, 400);
         assignmentsFrame.setLocationRelativeTo(courseFrame);
         assignmentsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JPanel assingmentPanel = new JPanel();
+        JPanel assignmentPanel = new JPanel();
 
         String headers[] = { "Name", "Description"};
         String data[][] = new String[userAssignments.size()][2];
@@ -99,9 +99,9 @@ public class UserView {
             assignmentsFrame.dispose();
         });
 
-        assingmentPanel.add(new JScrollPane(assignmentsTable));
-        assingmentPanel.add(back);
-        assignmentsFrame.add(assingmentPanel);
+        assignmentPanel.add(new JScrollPane(assignmentsTable));
+        assignmentPanel.add(back);
+        assignmentsFrame.add(assignmentPanel);
     }
 
     /**
