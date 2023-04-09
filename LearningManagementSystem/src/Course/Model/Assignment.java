@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Assignment {
+public class Assignment implements NavigationTab {
 
     int assignmentID;
     String assignmentName;
@@ -29,6 +29,9 @@ public class Assignment {
         this.assignmentDetails = assignmentDetails;
         this.courseID = courseID;
         this.dueDate = dueDate;
+    }
+
+    public Assignment() {
     }
 
     public int getAssignmentID() {
@@ -94,6 +97,12 @@ public class Assignment {
 
 
         System.out.println("All Assignments: " + userAssignments);
+    }
+
+    public void display() {}
+
+    public boolean isActive() {
+        return false;
     }
 
 }

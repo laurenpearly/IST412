@@ -26,9 +26,9 @@ public class CourseController {
         courses.add(test);
         courses.add(math);
         courses.add(science);
-        Assignment testAssign = new Assignment(28, "testAssignment", "details", 24);
-        Assignment testAssign2 = new Assignment(20, "testAssignment2", "details again", 24);
-        Assignment scienceAssign = new Assignment(28, "science assign", "wow", 33);
+        Assignment testAssign = new Assignment(28, "testAssignment", "details", 24, null);
+        Assignment testAssign2 = new Assignment(20, "testAssignment2", "details again", 24, null);
+        Assignment scienceAssign = new Assignment(28, "science assign", "wow", 33,null);
         assignments.add(testAssign);
         assignments.add(testAssign2);
         assignments.add(scienceAssign);
