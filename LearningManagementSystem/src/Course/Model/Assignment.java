@@ -6,6 +6,8 @@ public class Assignment {
     String assignmentName;
     String assignmentDetails;
     int courseID;
+    double score;
+    private GradingStrategy gradingStrategy;
 
     /**
      * Constructor for Assignment object.
@@ -36,5 +38,17 @@ public class Assignment {
 
     public int getCourseID() {
         return courseID;
+    }
+
+    public void setGradingStrategy(GradingStrategy strategy) {
+        this.gradingStrategy = strategy;
+    }
+
+    public double calculateGrade() {
+        return gradingStrategy.calculateGrade(this);
+    }
+
+    public double getScore() {
+        return score;
     }
 }
