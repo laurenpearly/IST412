@@ -66,7 +66,7 @@ public class Authentication {
             for (int i = 0; i < users.size();) {
                 temp = users.get(i);
 
-                if (temp.equals(userName) && i % 2 == 0) {          // If it the username is correct and an even number (all usernames are even numbers)
+                if (temp.equals(userName) && i % 2 == 0) {          // If the username is correct and an even number (all usernames are even numbers)
                     if(users.get(i + 1).equals(userPassword)) {     // The userPassword for the userName is the next element in the arrayList
                         System.out.println("Access granted.");
                         done = true;

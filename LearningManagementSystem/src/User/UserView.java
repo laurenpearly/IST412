@@ -23,6 +23,7 @@ public class UserView {
         this.cntl = cntl;
     }
 
+    private NavigationTabManager navTabManager;
     /**
      * View user details.
      * @param user User being viewed
@@ -120,5 +121,9 @@ public class UserView {
      */
     public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
         System.out.println("Output from User.UserView.viewGrades(): userID: " + userID + " grades: " + grades);
+    }
+
+    public void viewGrade(String courseName, int grade) {
+        System.out.println("Output from updated User.UserView.viewGrade(): Course Name: " + courseName + " grade: " + grade);
     }
 }

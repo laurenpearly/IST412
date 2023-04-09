@@ -11,6 +11,8 @@ import User.Model.User;
 import User.UserController;
 import Message.Model.Message;
 
+import java.util.Date;
+
 public class Main {
     /**
      * Start the program.
@@ -19,7 +21,8 @@ public class Main {
     public static void main(String[] args) {
         //dummy data for tests
         Course course = new Course(24, "TestCourse");
-        Assignment assignment = new Assignment(28, "testAssignment", "details", 24);
+        Date dueDate = new Date(2023, 3, 9);
+        Assignment assignment = new Assignment(28, "testAssignment", "details", 24, dueDate);
         TeachingTeam teachingTeam = new TeachingTeam(1, "teachteam", "tpassword",
                 "Sara", "TeachTeam");
         course.getTeachingTeamList().add(teachingTeam);

@@ -1,8 +1,9 @@
 package Message.Model;
 
+import Course.Model.NavigationTab;
 import User.Model.User;
 
-public class Message {
+public class Message implements NavigationTab {
     String messageContent;
     User sender;
     User receiver;
@@ -13,11 +14,18 @@ public class Message {
      * @param sender Sender of message.
      * @param receiver Receiver of message.
      */
+
+
     public Message(String messageContent, User sender, User receiver) {
          messageContent = this.messageContent;
          sender = this.sender;
          receiver = this.receiver;
     }
+
+    public Message() {
+
+    }
+
 
     /**
      * Send a message to another user.
@@ -39,5 +47,11 @@ public class Message {
     public void viewMessage(String messageContent, User sender) {
         System.out.println("Message: " + messageContent);
         System.out.println("From: " + sender.getUserFirstName());
+    }
+
+    public void display() {}
+
+    public boolean isActive() {
+        return false;
     }
 }

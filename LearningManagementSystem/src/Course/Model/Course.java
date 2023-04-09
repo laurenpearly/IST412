@@ -4,8 +4,9 @@ import User.Model.Student.Student;
 import User.Model.TeachingTeam.*;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Course {
+public class Course extends Observable implements NavigationTab{
     int courseID;
     String courseName;
     ArrayList<Assignment> courseAssignments;
@@ -13,6 +14,8 @@ public class Course {
     ArrayList<Student> studentList;
     ArrayList<TeachingTeam> teachingTeamList;
     ArrayList<Instructor> instructorList;
+    ArrayList<GradeObserver> gradeObservers;
+    int grade;
 
     /**
      * Constructor for new Course
@@ -24,7 +27,10 @@ public class Course {
         this.courseName = courseName;
         this.teachingTeamList = new ArrayList<>();
         this.studentList = new ArrayList<>();
+        gradeObservers = new ArrayList<GradeObserver>();
     }
+
+    public Course() {}
 
     /**
      * Assigns teaching team members to course.
@@ -60,8 +66,31 @@ public class Course {
     public String getCourseName() {
         return courseName;
     }
+    public int getGrade(){return grade;}
+    public void setGrade(int grade){
+        this.grade = grade;
+        setChanged();
+        notifyObservers();
+    }
 
+    public void addObserver(GradeObserver observer){
+        gradeObservers.add(observer);
+    }
+
+    public void removeObserver(GradeObserver observer) {
+        gradeObservers.remove(observer);
+    }
+
+    public void notifyGradeObservers(){
+        for(GradeObserver observer : gradeObservers){
+            observer.updateGrades();
+        }
+    }
     public ArrayList<TeachingTeam> getTeachingTeamList() {
         return teachingTeamList;
+    }
+    public void display(){}
+    public boolean isActive(){
+        return false;
     }
 }
