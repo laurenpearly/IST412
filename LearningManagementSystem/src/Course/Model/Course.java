@@ -15,7 +15,7 @@ public class Course extends Observable implements NavigationTab{
     ArrayList<TeachingTeam> teachingTeamList;
     ArrayList<Instructor> instructorList;
     ArrayList<GradeObserver> gradeObservers;
-    int grade;
+    Double grade;
 
     /**
      * Constructor for new Course
@@ -66,8 +66,21 @@ public class Course extends Observable implements NavigationTab{
     public String getCourseName() {
         return courseName;
     }
-    public int getGrade(){return grade;}
-    public void setGrade(int grade){
+
+    // Naming conventions are misleading - getScore() gets the assignemnts grade out of 100, while calculateGrade() returns a GPA-tailored calculation
+    public Double getGrade(){
+        Double total = 0.0;
+        int counter = 0;
+        for (Assignment asgn : courseAssignments) {
+            total =+ asgn.getScore();
+            counter ++;
+        }
+        total = total/counter;
+        return total;
+    }
+
+
+    public void setGrade(Double grade){
         this.grade = grade;
         setChanged();
         notifyObservers();

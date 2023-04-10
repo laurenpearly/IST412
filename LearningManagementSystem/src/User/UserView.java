@@ -123,7 +123,7 @@ public class UserView {
         System.out.println("Output from User.UserView.viewGrades(): userID: " + userID + " grades: " + grades);
     }
 
-    public void viewGrade(String courseName, int grade) {
+    public void viewGrade(String courseName, Double grade) {
         System.out.println("Output from updated User.UserView.viewGrade(): Course Name: " + courseName + " grade: " + grade);
     }
 }
