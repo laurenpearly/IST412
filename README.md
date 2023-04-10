@@ -1,5 +1,8 @@
 # IST412
 Erik - erg5272
+Tom - Tan5187
+Lauren - lmp5874
+Zac - zmh5199
 
 ## Logins
 
@@ -22,5 +25,5 @@ Erik - erg5272
 - **Erik - Alternating Row Colors:** Implemented in the UserView class to display assignments in a table.
 - **Lauren - Navigation Tabs:** Implemented in the Course, Assignment and Message classes and allows users to see their current active screen
 - **Logan - Notifications:** insert details of where implemented
-- **Password Strength Meters:** insert details of where implemented
+- **Tom - Password Strength Meters:** A meter which automatically ticks up as new data is being entered into the password textbox, informing new users of their prospective password strength, and giving present users a reminder of their potential password weakness.
 - **Zac - Calendar Picker:** Implemented in the Assignment class to allow users to view assignments by date
