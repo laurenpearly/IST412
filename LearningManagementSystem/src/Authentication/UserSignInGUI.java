@@ -87,7 +87,7 @@ public class UserSignInGUI extends JFrame implements ActionListener {
 
             // Write the username and password to the users.txt file
             try {
-                FileWriter fileWriter = new FileWriter("LearningManagementSystem/src/Authentication/logins.txt", true);
+                FileWriter fileWriter = new FileWriter("/src/Authentication/logins.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.newLine();
                 bufferedWriter.write(username + ":" + passwordString);
@@ -101,7 +101,7 @@ public class UserSignInGUI extends JFrame implements ActionListener {
     }
 
     class FileAuthenticator {
-        private static final String FILENAME = "LearningManagementSystem/src/Authentication/logins.txt";
+        private static final String FILENAME = "src/Authentication/logins.txt";
     
         public boolean authenticate(String username, char[] password) {
             // Get the saved passwords from our logins file
