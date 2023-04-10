@@ -12,7 +12,7 @@
 
 - **Erik - Singleton:** Implemented in the Authentication model class to ensure only one Authenticate object is used in the program.
 - **Lauren - Observer:** Implemented in the Course class to create a grade observer to allow changes to grades to be updated automattically throughout
-- **State:** insert details of where implemented
+- **Tom - Strategy:** Implemented in the Assignment class to allow different grading criteria and strategies such as Pass/Fail or Percentage.
 - **Logan - Composite Structure:** Implemented in the assignment and course classes to dynamically calculate grade and score at the course level.
 - **Zac - Iterator:** Implemented in the Assignment class to allow users to view assignments by today, this week, next week, and all assignments
 
