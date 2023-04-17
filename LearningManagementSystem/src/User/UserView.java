@@ -36,14 +36,24 @@ public class UserView {
         userFrame.setSize(800, 400);
         userFrame.setLayout(new BoxLayout(userFrame.getContentPane(), BoxLayout.Y_AXIS));
         userFrame.setLocationRelativeTo(null);
-        userFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        userFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JPanel viewUserPanel = new JPanel();
-        JButton assignments = new JButton("View Courses");
-        viewUserPanel.add(assignments);
-        userFrame.add(viewUserPanel);
-        assignments.addActionListener(event -> {
+
+        JButton courses = new JButton("View Courses");
+        courses.addActionListener(event -> {
             viewCourses(cntl.viewCourses(user));
         });
+        viewUserPanel.add(courses);
+
+        if(user.getUserType() == 0) {
+            JButton submit = new JButton("Submit Assignment");
+            viewUserPanel.add(submit);
+        } else {
+            JButton grade = new JButton("Grade Assignment");
+            viewUserPanel.add(grade);
+        }
+
+        userFrame.add(viewUserPanel);
     }
 
     /**

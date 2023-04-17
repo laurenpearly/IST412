@@ -3,3 +3,6 @@ dogLuvr2006:cuteKitties555
 tomsUsername:tomsPassword
 123:123
 331:331
+student:stu
+team:team
+instructor:teach

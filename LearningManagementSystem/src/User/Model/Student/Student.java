@@ -18,8 +18,8 @@ public class Student extends User {
      * @param userFirstName Student first name
      * @param userLastName Student last name
      */
-    public Student(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
-        super(userID, userLoginName, userPassword, userFirstName, userLastName);
+    public Student(int userID, int userType, String userLoginName, String userPassword, String userFirstName, String userLastName) {
+        super(userID, userType, userLoginName, userPassword, userFirstName, userLastName);
         this.grades = "A";
     }
 

@@ -14,8 +14,8 @@ public class Instructor extends TeachingTeam {
      * @param userFirstName Teaching team first name
      * @param userLastName Teaching team last name
      */
-    public Instructor(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
-        super(userID, userLoginName, userPassword, userFirstName, userLastName);
+    public Instructor(int userID, int userType, String userLoginName, String userPassword, String userFirstName, String userLastName) {
+        super(userID, userType, userLoginName, userPassword, userFirstName, userLastName);
     }
 
     /**

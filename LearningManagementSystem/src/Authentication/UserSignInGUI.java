@@ -1,6 +1,7 @@
 package Authentication;
 
-import Authentication.Model.Authentication;
+import User.UserController;
+import Data.Data;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,7 @@ public class UserSignInGUI extends JFrame implements ActionListener {
     private JButton loginButton, cancelButton, registerButton;
     private JProgressBar progressBar = new JProgressBar();
     private Timer timer;
+    UserController userCntl = new UserController();
 
     public UserSignInGUI() {
         usernameLabel = new JLabel("Username:");
@@ -73,7 +75,23 @@ public class UserSignInGUI extends JFrame implements ActionListener {
             // validate passwords
             FileAuthenticator authenticator = new FileAuthenticator();
             if (authenticator.authenticate(username, password)) {
-                JOptionPane.showMessageDialog(this, "Login successful.");
+                Data data = new Data();
+                switch(username) {
+                    case "student":
+                        userCntl.viewUser(data.getStudent());
+                        System.out.println("student");
+                        break;
+                    case "team":
+                        userCntl.viewUser(data.getTeachingTeam());
+                        System.out.println("teaching team");
+                        break;
+                    case "instructor":
+                        userCntl.viewUser(data.getInstructor());
+                        System.out.println("instructor");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(this, "Login successful.");
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username or password.");
             }

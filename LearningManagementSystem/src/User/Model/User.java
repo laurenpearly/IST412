@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class User {
     int userID;
-    String userType;
+    int userType;
     String userLoginName;
     String userPassword;
     String userFirstName;
@@ -21,8 +21,9 @@ public class User {
      * @param userFirstName First name of user.
      * @param userLastName Last name of user.
      */
-    public User(int userID, String userLoginName, String userPassword, String userFirstName, String userLastName) {
+    public User(int userID, int userType, String userLoginName, String userPassword, String userFirstName, String userLastName) {
         this.userID = userID;
+        this.userType = userType;
         this.userLoginName = userLoginName;
         this.userPassword = userPassword;
         this.userFirstName = userFirstName;
@@ -50,6 +51,10 @@ public class User {
 
     public int getUserID() {
         return userID;
+    }
+
+    public int getUserType() {
+        return userType;
     }
 
     public String getUserLoginName() {

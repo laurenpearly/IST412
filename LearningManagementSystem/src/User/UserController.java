@@ -32,12 +32,15 @@ public class UserController {
 
     /**
      * View user details.
-     * @param student Student being viewed.
+     * @param user User being viewed.
      */
-    public void viewUser(Student student) {
+    public void viewUser(User user) {
         System.out.println("Passing through UserController.viewUser()...");
-        //student.viewUser(student.getUserFirstName(), student.getUserLastName(), student.getUserCourses());
-        userView.viewUser(student);
+        switch(user.getUserType()) {
+            case 0:
+
+        }
+        userView.viewUser(user);
     }
 
     /**
