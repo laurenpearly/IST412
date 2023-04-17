@@ -21,9 +21,24 @@ public class UserSignInGUI extends JFrame implements ActionListener {
     private JButton loginButton, cancelButton, registerButton;
     private JProgressBar progressBar = new JProgressBar();
     private Timer timer;
+
+    //other objects
     UserController userCntl = new UserController();
 
+    //singleton object
+    private static UserSignInGUI obj;
+
     public UserSignInGUI() {
+        //don't put anything in here to force getInstance() to enforce this class as a singleton
+    }
+
+    //to enforce singleton
+    public static UserSignInGUI getInstance()
+    {
+        return obj;
+    }
+
+    public void showGui() {
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
         usernameTextField = new JTextField();
