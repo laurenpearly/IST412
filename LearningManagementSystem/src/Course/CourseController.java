@@ -5,14 +5,15 @@ import Course.Model.Course;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.Instructor;
 import User.Model.TeachingTeam.TeachingTeam;
+import User.Model.User;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class CourseController {
     ArrayList<Course> courses;
     ArrayList<Assignment> assignments;
     CourseView view;
-    Course model;
 
     /**
      * Constructor for Controller
@@ -20,33 +21,17 @@ public class CourseController {
     public CourseController() {
         courses = new ArrayList<>();
         assignments = new ArrayList<>();
-        this.model = model;
-        this.view = view;
-    }
-
-    /**
-     * Given the assignment ID, shows the name, details, and ID of the course it is assigned to.
-     * @param assignmentID The ID given to the Assignment.
-     * @param assignmentName Name given to the Assignment.
-     * @param assignmentDetails Details for the Assignment.
-     * @param courseID The ID of the Course the Assignment is assigned to.
-     */
-    public void viewAssignment(int assignmentID, String assignmentName, String assignmentDetails, int courseID) {
-
+        this.view = new CourseView(this);
     }
 
     /**
      * Displays course and its info.
-     * @param courseID ID for course.
-     * @param courseName Name for course.
-     * @param courseAssignments Assignments in course.
-     * @param courseSubmissions Submissions for course.
-     * @param studentList List of students in course.
-     * @param teachingTeamList List of teaching team members in course.
-     * @param instructorList List of instructors in course.
+     * @param user User courses being shown for
+     * @param userFrame starting point for GUI
      */
-    public void viewCourse(int courseID, String courseName, ArrayList<Assignment> courseAssignments, String courseSubmissions, ArrayList<Student> studentList, ArrayList<TeachingTeam> teachingTeamList, ArrayList<Instructor> instructorList) {
-        view.viewCourse(courseID,courseName,courseAssignments,courseSubmissions,studentList,teachingTeamList,instructorList);
+    public void viewCourses(User user, JFrame userFrame) {
+        ArrayList<Course> userCourses = getCourses(user.getUserCourses());
+        view.viewCourse(user, userFrame, userCourses);
     }
 
     /**

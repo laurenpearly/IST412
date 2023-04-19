@@ -15,7 +15,6 @@ import java.io.FileReader;
 public class Data {
 
     CourseController courseCntl;
-    MessageController messageCntl;
     TeachingTeam teachingTeam;
     Instructor instructor;
     Student student;
@@ -23,7 +22,6 @@ public class Data {
 
     public Data() {
         courseCntl = new CourseController();
-        messageCntl = new MessageController();
         createCourseObjects();
         createAssignmentObjects();
 

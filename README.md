@@ -15,12 +15,15 @@ Zac - zmh5199
 ## Erik
 
 - **testharness.Main:** Deleted commented code. Moved Main method to start program out into root directory.
-- **Data/Data class:** Repurposed testharness into Data package and class, loads persistent data from text files(database) for use in the program.
-- **Authentication.Model.Authentication:** Split code from AuthView and put here.
-- **Authentication.AuthController:** Split code from AuthView and put here.
+- **Data.Data:** Repurposed testharness into Data package and class, loads persistent data from text files(database) for use in the program.
+- **Authentication.Model.Authentication:** Split code from AuthView and put here to make it useful again (was Dead Code code smell).
+- **Authentication.AuthController:** Split code from AuthView and put here to make it useful again (was Speculative Generality code smell).
 - **Authentication.AuthView:** UserSignInGUI is now AuthView, and code has been split between this class, Authentication, and AuthController to make class smaller.
-- **UserController.createAssignment():** Shortened parameter list by passing Assignment object instead of individual attributes.
-- **UserController.createCourse():** Shortened parameter list by passing Course object instead of individual attributes.
+- **User.UserController.createAssignment():** Shortened parameter list by passing Assignment object instead of individual attributes.
+- **User.UserController.createCourse():** Shortened parameter list by passing Course object instead of individual attributes.
+- **User.UserView:** Moved some code to CourseController and CourseView to make class smaller.
+- **User.UserController.viewAssignment():** Removed because no longer needed, eliminating the message chain.
+- **NOTE:** User.UserController.viewCourses() still includes a small message chain, because objects needed to get passed from UserView to CourseView and there was no way to make it more concise.
 
 ## Refactoring Notes
 

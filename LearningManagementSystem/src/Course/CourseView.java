@@ -1,29 +1,25 @@
 package Course;
 
 import Course.Model.Assignment;
-import User.Model.Student.Student;
-import User.Model.TeachingTeam.Instructor;
-import User.Model.TeachingTeam.TeachingTeam;
+import Course.Model.Course;
+import User.Model.User;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class CourseView {
-    String courseID;
-    String courseName;
-    ArrayList<Assignment> courseAssignments;
-    String courseSubmissions;
-    ArrayList<Student> studentList;
-    ArrayList<TeachingTeam> teachingTeamList;
-    ArrayList<Instructor> instructorList;
-    int assignmentID;
-    String assignmentName;
-    String assignmentDetails;
+
+    JFrame courseFrame;
+    JFrame assignmentsFrame;
+    CourseController courseCntl;
 
     /**
      * Constructor for View
      */
-    public CourseView() {
-
+    public CourseView(CourseController courseCntl) {
+        this.courseCntl = courseCntl;
     }
 
     /**
@@ -43,22 +39,59 @@ public class CourseView {
 
     /**
      * Displays course and its info.
-     * @param courseID ID for course.
-     * @param courseName Name for course.
-     * @param courseAssignments Assignments in course.
-     * @param courseSubmissions Submissions for course.
-     * @param studentList List of students in course.
-     * @param teachingTeamList List of teaching team members in course.
-     * @param instructorList List of instructors in course.
+     * @param user User courses are being shown for
+     * @param userFrame starting point to orient GUI elements
+     * @param userCourses list of user courses
      */
-    public void viewCourse(int courseID, String courseName, ArrayList<Assignment> courseAssignments, String courseSubmissions, ArrayList<Student> studentList, ArrayList<TeachingTeam> teachingTeamList, ArrayList<Instructor> instructorList) {
+    public void viewCourse(User user, JFrame userFrame, ArrayList<Course> userCourses) {
         System.out.println("Output from CourseView");
-        System.out.println("Course ID: " + courseID);
-        System.out.println("Course Name: " + courseName);
-        System.out.println("Course Assignments: " + courseAssignments);
-        System.out.println("Course Submissions: " + courseSubmissions);
-        System.out.println("Student List: " + studentList);
-        System.out.println("Teaching TeamList: " + teachingTeamList);
-        System.out.println("Instructor List: " + instructorList);
+        courseFrame = new JFrame("Courses");
+        courseFrame.setVisible(true);
+        courseFrame.setSize(800, 400);
+        courseFrame.setLocationRelativeTo(userFrame);
+        courseFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel courseButtons = new JPanel();
+        for (Course course : userCourses) {
+            JButton btn = new JButton(course.getCourseName());
+            btn.addActionListener(event -> {
+                viewAssignments(course, courseCntl.getAssignments(course.getCourseID()));
+            });
+            courseButtons.add(btn);
+        }
+        courseFrame.add(courseButtons);
+    }
+
+    public void viewAssignments(Course course, ArrayList<Assignment> userAssignments) {
+        assignmentsFrame = new JFrame(course.getCourseName() + " Assignments");
+        assignmentsFrame.setVisible(true);
+        assignmentsFrame.setSize(800, 400);
+        assignmentsFrame.setLocationRelativeTo(courseFrame);
+        assignmentsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel assignmentPanel = new JPanel();
+
+        String headers[] = { "Name", "Description"};
+        String data[][] = new String[userAssignments.size()][2];
+
+        for (int i = 0; i < userAssignments.size(); i ++){
+            data[i][0] = userAssignments.get(i).getAssignmentName();
+            data[i][1] = userAssignments.get(i).getAssignmentDetails();
+        }
+
+        JTable assignmentsTable = new JTable();
+        DefaultTableModel dtm = new DefaultTableModel(data, headers);
+        assignmentsTable.setModel(dtm);
+
+        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+        if (defaults.get("Table.alternateRowColor") == null)
+            defaults.put("Table.alternateRowColor", new Color(210, 210, 210));
+
+        JButton back = new JButton("Back");
+        back.addActionListener(event -> {
+            assignmentsFrame.dispose();
+        });
+
+        assignmentPanel.add(new JScrollPane(assignmentsTable));
+        assignmentPanel.add(back);
+        assignmentsFrame.add(assignmentPanel);
     }
 }

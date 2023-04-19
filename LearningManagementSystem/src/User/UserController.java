@@ -10,6 +10,7 @@ import User.Model.TeachingTeam.Instructor;
 import User.Model.TeachingTeam.TeachingTeam;
 import User.Model.User;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class UserController {
@@ -43,20 +44,9 @@ public class UserController {
      * View a user's courses.
      * @param user User whose courses are being viewed
      */
-    public ArrayList<Course> viewCourses(User user) {
+    public void viewCourses(User user, JFrame userFrame) {
         System.out.println("Passing through UserController.viewCourses()...");
-        ArrayList<Course> courses = new ArrayList<>(courseCtrl.getCourses(user.getUserCourses()));
-        return courses;
-    }
-
-    /**
-     * View assignments for a course.
-     * @param courseID Course whose assignments are being viewed.
-     */
-    public ArrayList<Assignment> viewAssignments(int courseID) {
-        System.out.println("Passing through UserController.viewAssignments()...");
-        ArrayList<Assignment> assignments = new ArrayList<>(courseCtrl.getAssignments(courseID));
-        return assignments;
+        courseCtrl.viewCourses(user, userFrame);
     }
 
     /**

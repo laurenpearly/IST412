@@ -41,7 +41,7 @@ public class UserView {
 
         JButton courses = new JButton("View Courses");
         courses.addActionListener(event -> {
-            viewCourses(cntl.viewCourses(user));
+            cntl.viewCourses(user, userFrame);
         });
         viewUserPanel.add(courses);
 
@@ -54,66 +54,6 @@ public class UserView {
         }
 
         userFrame.add(viewUserPanel);
-    }
-
-    /**
-     * View a user's courses.
-     * @param userCourses List of user's courses.
-     */
-    public void viewCourses(ArrayList<Course> userCourses) {
-        courseFrame = new JFrame("Courses");
-        courseFrame.setVisible(true);
-        courseFrame.setSize(800, 400);
-        courseFrame.setLocationRelativeTo(userFrame);
-        courseFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JPanel courseButtons = new JPanel();
-        for (Course course : userCourses) {
-            JButton btn = new JButton(course.getCourseName());
-            btn.addActionListener(event -> {
-                viewAssignments(course, cntl.viewAssignments(course.getCourseID()));
-            });
-            courseButtons.add(btn);
-        }
-        courseFrame.add(courseButtons);
-
-    }
-
-    /**
-     * View assignments for a course.
-     * @param course Course.
-     */
-    public void viewAssignments(Course course, ArrayList<Assignment> userAssignments) {
-        assignmentsFrame = new JFrame(course.getCourseName() + " Assignments");
-        assignmentsFrame.setVisible(true);
-        assignmentsFrame.setSize(800, 400);
-        assignmentsFrame.setLocationRelativeTo(courseFrame);
-        assignmentsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JPanel assignmentPanel = new JPanel();
-
-        String headers[] = { "Name", "Description"};
-        String data[][] = new String[userAssignments.size()][2];
-
-        for (int i = 0; i < userAssignments.size(); i ++){
-            data[i][0] = userAssignments.get(i).getAssignmentName();
-            data[i][1] = userAssignments.get(i).getAssignmentDetails();
-        }
-
-        JTable assignmentsTable = new JTable();
-        DefaultTableModel dtm = new DefaultTableModel(data, headers);
-        assignmentsTable.setModel(dtm);
-
-        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-        if (defaults.get("Table.alternateRowColor") == null)
-            defaults.put("Table.alternateRowColor", new Color(210, 210, 210));
-
-        JButton back = new JButton("Back");
-        back.addActionListener(event -> {
-            assignmentsFrame.dispose();
-        });
-
-        assignmentPanel.add(new JScrollPane(assignmentsTable));
-        assignmentPanel.add(back);
-        assignmentsFrame.add(assignmentPanel);
     }
 
     /**
