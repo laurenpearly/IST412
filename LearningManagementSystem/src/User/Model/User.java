@@ -76,4 +76,8 @@ public class User {
     public ArrayList<Integer> getUserCourses() {
         return userCourses;
     }
+
+    public void addUserCourses(int courseID) {
+        userCourses.add(courseID);
+    }
 }

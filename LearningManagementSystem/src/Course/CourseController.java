@@ -20,18 +20,6 @@ public class CourseController {
     public CourseController() {
         courses = new ArrayList<>();
         assignments = new ArrayList<>();
-        Course test = new Course(24,"test");
-        Course math = new Course(45, "math");
-        Course science = new Course(33, "science");
-        courses.add(test);
-        courses.add(math);
-        courses.add(science);
-        Assignment testAssign = new Assignment(28, "testAssignment", "details", 24, null);
-        Assignment testAssign2 = new Assignment(20, "testAssignment2", "details again", 24, null);
-        Assignment scienceAssign = new Assignment(28, "science assign", "wow", 33,null);
-        assignments.add(testAssign);
-        assignments.add(testAssign2);
-        assignments.add(scienceAssign);
         this.model = model;
         this.view = view;
     }
@@ -92,6 +80,14 @@ public class CourseController {
     }
 
     public void submitAssignment(int userID, int courseID, int assignmentID, String courseSubmission) {
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void addAssignment(Assignment assignment) {
+        assignments.add(assignment);
     }
 
     public ArrayList<Course> getCourses(ArrayList<Integer> courseIds) {

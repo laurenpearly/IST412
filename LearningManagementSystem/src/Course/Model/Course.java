@@ -99,6 +99,11 @@ public class Course extends Observable implements NavigationTab{
             observer.updateGrades();
         }
     }
+
+    public void addTeachingTeam(TeachingTeam teachingTeam) {
+        teachingTeamList.add(teachingTeam);
+    }
+
     public ArrayList<TeachingTeam> getTeachingTeamList() {
         return teachingTeamList;
     }

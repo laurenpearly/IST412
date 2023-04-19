@@ -9,10 +9,13 @@ import User.Model.TeachingTeam.TeachingTeam;
 import User.UserController;
 import Message.Model.Message;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Date;
 
 public class Data {
 
+    CourseController courseCntl;
     Course course;
     Date dueDate;
     Assignment assignment;
@@ -22,9 +25,10 @@ public class Data {
     Message message;
 
     public Data() {
-        course = new Course(24, "TestCourse");
-        dueDate = new Date(2023, 3, 9);
-        assignment = new Assignment(28, "testAssignment", "details", 24, dueDate);
+        courseCntl = new CourseController();
+        createCourseObjects();
+        createAssignmentObjects();
+
         teachingTeam = new TeachingTeam(1, 1, "team", "team",
                 "Sara", "TeachTeam");
         instructor = new Instructor(2, 2, "instructor", "teach",
@@ -33,10 +37,39 @@ public class Data {
                 "stu", "Erik", "Student");
         message = new Message("Test message", student, instructor);
 
-        course.getTeachingTeamList().add(teachingTeam);
-        course.getTeachingTeamList().add(instructor);
-        student.getUserCourses().add(24);
-        student.getUserCourses().add(33);
+        student.addUserCourses(24);
+        student.addUserCourses(33);
+        //FIXcourse.getTeachingTeamList().add(teachingTeam);
+        //FIXcourse.getTeachingTeamList().add(instructor);
+    }
+
+    private void createCourseObjects() {
+        final String FILENAME = "src/Data/courseList.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] course = line.split(":");
+                Course courseObj = new Course(Integer.parseInt(course[0]),course[1]);
+                courseCntl.addCourse(courseObj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createAssignmentObjects() {
+        final String FILENAME = "src/Data/assignmentList.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] assignment = line.split(":");
+                Assignment assignmentObj = new Assignment(Integer.parseInt(assignment[0]),assignment[1],
+                        assignment[2],Integer.parseInt(assignment[3]));
+                courseCntl.addAssignment(assignmentObj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Student getStudent() {
@@ -51,16 +84,8 @@ public class Data {
         return instructor;
     }
 
-    public static void data() {
-        //dummy data for tests
-
-
-        //controllers to call from tests here
-        CourseController corsCtrl = new CourseController();
-        UserController userCtrl = new UserController();
-        //AuthController authCtrl = new AuthController();
-
-        //corsCtrl.addCourses(course);
-
+    public CourseController getCourseCntl() {
+        return courseCntl;
     }
+
 }

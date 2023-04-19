@@ -1,9 +1,9 @@
 package User;
 
-import Authentication.AuthController;
 import Course.CourseController;
 import Course.Model.Assignment;
 import Course.Model.Course;
+import Data.Data;
 import Message.MessageController;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.Instructor;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class UserController {
     UserView userView;
-    //AuthController authCtrl;
+    Data data;
     CourseController courseCtrl;
     MessageController messageCtrl;
     ArrayList<Student> studentList;
@@ -23,8 +23,8 @@ public class UserController {
      * Constructor for Controller
      */
     public UserController() {
-        //authCtrl = new AuthController();
-        courseCtrl = new CourseController();
+        data = new Data();
+        courseCtrl = data.getCourseCntl();
         messageCtrl = new MessageController();
         userView = new UserView(this);
         studentList = new ArrayList<Student>();
@@ -36,10 +36,6 @@ public class UserController {
      */
     public void viewUser(User user) {
         System.out.println("Passing through UserController.viewUser()...");
-        switch(user.getUserType()) {
-            case 0:
-
-        }
         userView.viewUser(user);
     }
 

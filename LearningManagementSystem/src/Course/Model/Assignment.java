@@ -34,6 +34,13 @@ public class Assignment implements NavigationTab {
         this.score = score;
     }
 
+    public Assignment(int assignmentID, String assignmentName, String assignmentDetails, int courseID) {
+        this.assignmentID = assignmentID;
+        this.assignmentName = assignmentName;
+        this.assignmentDetails = assignmentDetails;
+        this.courseID = courseID;
+    }
+
     public Assignment() {
     }
 
