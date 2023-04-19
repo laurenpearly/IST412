@@ -1,18 +1,20 @@
-# IST412
-Erik - erg5272
-Tom - Tan5187
-Lauren - lmp5874
+# IST412 - LMS
+Erik - erg5272  
+Tom - tan5187  
+Lauren - lmp5874  
 Zac - zmh5199
 
 ## Logins
 
 - **Student:** username: student, password: stu
 - **Teaching Team:** username: team, password: team
-- **Instructor:** username: instruct, password: teach
+- **Instructor:** username: instructor, password: teach
 
-## M04-A03 Refactoring Implementations
+## M04-A03 - Two Implemented Use Cases with Clean, Refactored Code
 
-### Erik:
+### Refactoring Plan Implementations
+
+#### Erik:
 
 - **testharness.Main:** Deleted commented code. Moved Main method to start program out into root directory.
 - **Data.Data:** Repurposed testharness into Data package and class, loads persistent data from text files(database) for use in the program.
