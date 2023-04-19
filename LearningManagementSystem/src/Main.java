@@ -1,9 +1,9 @@
-import Authentication.UserSignInGUI;
+import Authentication.AuthController;
 
 public class Main {
 
     public static void main(String[] args){
-        UserSignInGUI userSignIn = new UserSignInGUI();
-        userSignIn.showGui();
+        AuthController authCntl = new AuthController();
+        authCntl.showLoginGUI();
     }
 }

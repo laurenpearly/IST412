@@ -10,6 +10,22 @@ Zac - zmh5199
 - **Teaching Team:** username: team, password: team
 - **Instructor:** username: instruct, password: teach
 
+## M04-A03 Refactoring Implementations
+
+## Erik
+
+- **testharness.Main:** Deleted commented code. Moved Main method to start program out into root directory.
+- **Data/Data class:** Repurposed testharness into Data package and class, loads persistent data from text files(database) for use in the program.
+- **Authentication.Model.Authentication:** Split code from AuthView and put here.
+- **Authentication.AuthController:** Split code from AuthView and put here.
+- **Authentication.AuthView:** UserSignInGUI is now AuthView, and code has been split between this class, Authentication, and AuthController to make class smaller.
+- **UserController.createAssignment():** Shortened parameter list by passing Assignment object instead of individual attributes.
+- **UserController.createCourse():** Shortened parameter list by passing Course object instead of individual attributes.
+
+## Refactoring Notes
+
+Some of our refactoring plans could not be carried out for a few reasons. The message chains in UserController need to be there since it is the only way to obtain user courses and their assignments.
+
 ## Design Patterns
 
 ### Object-Oriented Design Patterns

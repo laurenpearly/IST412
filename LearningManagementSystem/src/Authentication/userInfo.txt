@@ -1,3 +1,0 @@
-student, stu
-team, team
-instructor, teach

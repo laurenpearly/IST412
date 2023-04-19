@@ -1,22 +1,15 @@
 package Authentication.Model;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
+import java.io.*;
 
 public class Authentication {
 
-    //object for making singleton
-    private static Authentication obj;
-    Scanner sc = new Scanner("userInfo.txt");
-    ArrayList<String> users = new ArrayList<String>();
-    String userName;
-    String userPassword;
+    private static final String FILENAME = "src/Authentication/logins.txt";
 
-    /**
-     * Constructs Authentication.
-     * Builds the user ArrayList from a txt file for use in program.
-     */
+    //singleton object
+    private static Authentication obj;
+
     public Authentication() {
         //don't put anything in here to force getInstance() to enforce this class as a singleton
     }
@@ -27,60 +20,48 @@ public class Authentication {
         return obj;
     }
 
-    public void authentication() {
-        try{
-            File userInfo = new File("userInfo.txt");
-            Scanner sc = new Scanner(userInfo);
-
-            while (sc.hasNextLine()){
-                String accountInfo = sc.nextLine();
-                String[] str = new String[2];
-                str = accountInfo.split(", ");
-
-                users.add(str[0]);  // userName (even numbers)
-                users.add(str[1]);  // userPassword (odd numbers)
-
-                str = null;         // Empties temp list
-            }
-            sc.close();
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
-    /**
-     * Authenticates a user at login.
-     * @param users List of users and their IDs, Usernames, Passwords, First Names, and Last Names.
-     */
-    public void authenticate(ArrayList<String> users, String userName, String userPaswword) {
-        String temp = "";
-        boolean done = false;
-
-        while(!done)
-        {
-            System.out.println("Please enter your username: ");
-            userName = sc.nextLine();
-            System.out.println("Please enter your password: ");
-            userPassword = sc.nextLine();
-
-            for (int i = 0; i < users.size();) {
-                temp = users.get(i);
-
-                if (temp.equals(userName) && i % 2 == 0) {          // If the username is correct and an even number (all usernames are even numbers)
-                    if(users.get(i + 1).equals(userPassword)) {     // The userPassword for the userName is the next element in the arrayList
-                        System.out.println("Access granted.");
-                        done = true;
-                    }
-                    else {
-                        break;                                      // Goes back to entering the userName and userPassword
-                    }
-                }
-                else {
-                    i++;                                            // Continues searching arrayList for the userName
+    public boolean authenticate(String username, char[] password) {
+        // Get the saved passwords from our logins file
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(":");
+                if (parts.length == 2 && parts[0].equals(username) && parts[1].equals(new String(password))) {
+                    return true;
                 }
             }
-
-            System.out.println("The username or password entered was incorrect.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return false;
     }
+
+    public int checkPasswordStrength(String password) {
+        int complexity = 0;
+        if (password.length() >= 8) {
+            complexity++;
+        }
+        if (password.matches(".*[A-Z].*")) {
+            complexity++;
+        }
+        if (password.matches(".*[a-z].*")) {
+            complexity++;
+        }
+        if (password.matches(".*[0-9].*")) {
+            complexity++;
+        }
+        if (password.matches(".*[@#$%^&+=].*")) {
+            complexity++;
+        }
+        return complexity;
+    }
+
+    public void registerUser(String username, String password) throws IOException {
+        FileWriter fileWriter = new FileWriter("/src/Authentication/logins.txt", true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.newLine();
+        bufferedWriter.write(username + ":" + password);
+        bufferedWriter.close();
+    }
+
 }

@@ -24,11 +24,11 @@ public class UserView {
     }
 
     private NavigationTabManager navTabManager;
+
     /**
      * View user details.
      * @param user User being viewed
      */
-     
     public void viewUser(User user) {
         System.out.println("Output from User.UserView.viewUser(): userFirstName: " + user.getUserFirstName());
         userFrame = new JFrame("View User");

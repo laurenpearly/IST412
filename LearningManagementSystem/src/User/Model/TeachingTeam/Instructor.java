@@ -1,8 +1,7 @@
 package User.Model.TeachingTeam;
 
+import Course.Model.Assignment;
 import Course.Model.Course;
-
-import java.util.ArrayList;
 
 public class Instructor extends TeachingTeam {
 
@@ -20,22 +19,19 @@ public class Instructor extends TeachingTeam {
 
     /**
      * Creates a course
-     * @param courseID ID of course to be made
-     * @param courseName Name of course
+     * @param course Course to be made
      */
-    public void createCourse(int courseID, String courseName) {
-        System.out.println("Output from User.Model.TeachingTeam.Instructor.createCourse(): courseName: " + courseName);
+    public void createCourse(Course course) {
+        System.out.println("Output from User.Model.TeachingTeam.Instructor.createCourse(): courseName: " +
+                course.getCourseName());
     }
 
     /**
      * Creates an assignment for a course
-     * @param courseID ID of course to create assignment for
-     * @param assignmentID ID of assignment being made
-     * @param assignmentName Name of assignment
-     * @param assignmentDetails Details of assignment
+     * @param assignment Assignment being made
      */
-    public void createAssignment(int courseID, int assignmentID, String assignmentName, String assignmentDetails) {
-        System.out.println("Output from User.Model.TeachingTeam.Instructor.createAssignment(): courseID: " + courseID +
-                " assignmentName: " + assignmentName);
+    public void createAssignment(Assignment assignment) {
+        System.out.println("Output from User.Model.TeachingTeam.Instructor.createAssignment(): courseID: " +
+                assignment.getCourseID() + " assignmentName: " + assignment.getAssignmentName());
     }
 }

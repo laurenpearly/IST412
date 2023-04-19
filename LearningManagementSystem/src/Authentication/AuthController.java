@@ -1,29 +1,56 @@
 package Authentication;
 
-    import Authentication.Model.Authentication;
-    import Authentication.AuthView;
+import Authentication.Model.Authentication;
+import Data.Data;
+import User.UserController;
+
+import java.io.IOException;
 
 public class AuthController {
-    
-    Authentication authentication;
+
+    Data data;
     AuthView authView;
+    Authentication auth;
+    UserController userCntl;
 
-    /**
-     * Constructor for Authentication Controller.
-     */
     public AuthController() {
-        authentication = new Authentication();
-        authentication.authentication();
-        authView = new AuthView();
+        authView = new AuthView(this);
+        auth = new Authentication();
+        userCntl = new UserController();
     }
 
-    /**
-     * Authenticates a user's input with the login info from Model.
-     * @param userName User's input username.
-     * @param userPassword User's input password.
-     */
-    public void authenticate(String userName, String userPassword) {
-        System.out.println("Output from Authentication.Controller.authenticate(): username: " + userName +
-                " password: " + userPassword);
+    public void showLoginGUI() {
+        authView.showGui();
     }
+
+    public boolean authenticate(String username, char[] password) {
+        return auth.authenticate(username, password);
+    }
+
+    public int checkPasswordStrength(String password) {
+        return auth.checkPasswordStrength(password);
+    }
+
+    public void registerUser(String username, String password) throws IOException {
+        auth.registerUser(username, password);
+    }
+
+    public void viewUser(String username) {
+        data = new Data();
+        switch (username) {
+            case "student":
+                userCntl.viewUser(data.getStudent());
+                System.out.println("student");
+                break;
+            case "team":
+                userCntl.viewUser(data.getTeachingTeam());
+                System.out.println("teaching team");
+                break;
+            case "instructor":
+                userCntl.viewUser(data.getInstructor());
+                System.out.println("instructor");
+                break;
+        }
+    }
+
 }

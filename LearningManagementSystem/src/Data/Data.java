@@ -3,22 +3,19 @@ package Data;
 import Course.CourseController;
 import Course.Model.Assignment;
 import Course.Model.Course;
+import Message.MessageController;
+import Message.Model.Message;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.Instructor;
 import User.Model.TeachingTeam.TeachingTeam;
-import User.UserController;
-import Message.Model.Message;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Date;
 
 public class Data {
 
     CourseController courseCntl;
-    Course course;
-    Date dueDate;
-    Assignment assignment;
+    MessageController messageCntl;
     TeachingTeam teachingTeam;
     Instructor instructor;
     Student student;
@@ -26,6 +23,7 @@ public class Data {
 
     public Data() {
         courseCntl = new CourseController();
+        messageCntl = new MessageController();
         createCourseObjects();
         createAssignmentObjects();
 

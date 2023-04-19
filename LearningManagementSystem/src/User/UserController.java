@@ -23,7 +23,7 @@ public class UserController {
      * Constructor for Controller
      */
     public UserController() {
-        data = new Data();
+        this.data = new Data();
         courseCtrl = data.getCourseCntl();
         messageCtrl = new MessageController();
         userView = new UserView(this);
@@ -135,24 +135,20 @@ public class UserController {
     /**
      * Creates a course
      * @param instructor Instructor creating the course
-     * @param courseID ID of course to be made
-     * @param courseName Name of course
+     * @param course Course being made
      */
-    public void createCourse(Instructor instructor, int courseID, String courseName) {
+    public void createCourse(Instructor instructor, Course course) {
         System.out.println("Passing through User.UserController.createCourse()...");
-        instructor.createCourse(courseID, courseName);
+        instructor.createCourse(course);
     }
 
     /**
      * Creates an assignment for a course
      * @param instructor Instructor creating the assignment
-     * @param courseID ID of course to create assignment for
-     * @param assignmentID ID of assignment being made
-     * @param assignmentName Name of assignment
-     * @param assignmentDetails Details of assignment
+     * @param assignment Assignment being made
      */
-    public void createAssignment(Instructor instructor, int courseID, int assignmentID, String assignmentName, String assignmentDetails) {
+    public void createAssignment(Instructor instructor, Assignment assignment) {
         System.out.println("Passing through User.UserController.createAssignment()...");
-        instructor.createAssignment(courseID, assignmentID, assignmentName, assignmentDetails);
+        instructor.createAssignment(assignment);
     }
 }
