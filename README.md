@@ -12,7 +12,7 @@ Zac - zmh5199
 
 ## M04-A03 Refactoring Implementations
 
-## Erik
+### Erik:
 
 - **testharness.Main:** Deleted commented code. Moved Main method to start program out into root directory.
 - **Data.Data:** Repurposed testharness into Data package and class, loads persistent data from text files(database) for use in the program.
@@ -24,10 +24,6 @@ Zac - zmh5199
 - **User.UserView:** Moved some code to CourseController and CourseView to make class smaller.
 - **User.UserController.viewAssignment():** Removed because no longer needed, eliminating the message chain.
 - **NOTE:** User.UserController.viewCourses() still includes a small message chain, because objects needed to get passed from UserView to CourseView and there was no way to make it more concise.
-
-## Refactoring Notes
-
-Some of our refactoring plans could not be carried out for a few reasons. The message chains in UserController need to be there since it is the only way to obtain user courses and their assignments.
 
 ## Design Patterns
 
