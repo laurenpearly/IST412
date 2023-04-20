@@ -2,9 +2,7 @@ package Course;
 
 import Course.Model.Assignment;
 import Course.Model.Course;
-import User.Model.Student.Student;
-import User.Model.TeachingTeam.Instructor;
-import User.Model.TeachingTeam.TeachingTeam;
+import Course.View.CourseView;
 import User.Model.User;
 
 import javax.swing.*;
@@ -85,6 +83,15 @@ public class CourseController {
             }
         }
         return userCourses;
+    }
+
+    public Assignment getOneAssignment(int assignmentID) {
+        for (Assignment a : assignments) {
+            if (a.getAssignmentID() == assignmentID) {
+                return a;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Assignment> getAssignments(int courseID) {

@@ -1,20 +1,15 @@
 package User;
 
-import Course.Model.Assignment;
 import Course.Model.Course;
 import User.Model.User;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class UserView {
 
     private UserController cntl;
     JFrame userFrame;
-    JFrame courseFrame;
-    JFrame assignmentsFrame;
 
     /**
      * Constructor for View
@@ -44,14 +39,6 @@ public class UserView {
             cntl.viewCourses(user, userFrame);
         });
         viewUserPanel.add(courses);
-
-        if(user.getUserType() == 0) {
-            JButton submit = new JButton("Submit Assignment");
-            viewUserPanel.add(submit);
-        } else {
-            JButton grade = new JButton("Grade Assignment");
-            viewUserPanel.add(grade);
-        }
 
         userFrame.add(viewUserPanel);
     }

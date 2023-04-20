@@ -1,4 +1,4 @@
-package Course;
+package Course.View;
 
 import Course.Model.Course;
 import Course.Model.GradeObserver;

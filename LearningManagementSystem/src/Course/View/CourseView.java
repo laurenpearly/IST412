@@ -1,5 +1,6 @@
-package Course;
+package Course.View;
 
+import Course.CourseController;
 import Course.Model.Assignment;
 import Course.Model.Course;
 import User.Model.User;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class CourseView {
 
+    SubmissionView subView;
     JFrame courseFrame;
     JFrame assignmentsFrame;
     CourseController courseCntl;
@@ -20,6 +22,7 @@ public class CourseView {
      */
     public CourseView(CourseController courseCntl) {
         this.courseCntl = courseCntl;
+        this.subView = new SubmissionView(this);
     }
 
     /**
@@ -54,14 +57,14 @@ public class CourseView {
         for (Course course : userCourses) {
             JButton btn = new JButton(course.getCourseName());
             btn.addActionListener(event -> {
-                viewAssignments(course, courseCntl.getAssignments(course.getCourseID()));
+                viewAssignments(user, course, courseCntl.getAssignments(course.getCourseID()));
             });
             courseButtons.add(btn);
         }
         courseFrame.add(courseButtons);
     }
 
-    public void viewAssignments(Course course, ArrayList<Assignment> userAssignments) {
+    public void viewAssignments(User user, Course course, ArrayList<Assignment> userAssignments) {
         assignmentsFrame = new JFrame(course.getCourseName() + " Assignments");
         assignmentsFrame.setVisible(true);
         assignmentsFrame.setSize(800, 400);
@@ -70,11 +73,12 @@ public class CourseView {
         JPanel assignmentPanel = new JPanel();
 
         String headers[] = { "Name", "Description"};
-        String data[][] = new String[userAssignments.size()][2];
+        String data[][] = new String[userAssignments.size()][3];
 
         for (int i = 0; i < userAssignments.size(); i ++){
             data[i][0] = userAssignments.get(i).getAssignmentName();
             data[i][1] = userAssignments.get(i).getAssignmentDetails();
+            data[i][2] = Integer.toString(userAssignments.get(i).getAssignmentID());
         }
 
         JTable assignmentsTable = new JTable();
@@ -89,9 +93,25 @@ public class CourseView {
         back.addActionListener(event -> {
             assignmentsFrame.dispose();
         });
-
         assignmentPanel.add(new JScrollPane(assignmentsTable));
+
+        if(user.getUserType() == 0) {
+            JButton submit = new JButton("Submit Assignment");
+            submit.addActionListener(event -> {
+                try {
+                    subView.enterSubView(assignmentsFrame, user,
+                            courseCntl.getOneAssignment(Integer.parseInt(data[assignmentsTable.getSelectedRow()][2])));
+                } catch (ArrayIndexOutOfBoundsException indexOOB) {
+                    JOptionPane.showMessageDialog(assignmentsFrame, "Please choose an assignment to submit to.");
+                }
+            });
+            assignmentPanel.add(submit);
+        } else {
+            JButton grade = new JButton("Grade Assignment");
+            assignmentPanel.add(grade);
+        }
         assignmentPanel.add(back);
+
         assignmentsFrame.add(assignmentPanel);
     }
 }

@@ -1,5 +1,4 @@
 username:password
-dogLuvr2006:cuteKitties555
 tomsUsername:tomsPassword
 123:123
 331:331
