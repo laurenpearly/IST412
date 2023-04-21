@@ -80,19 +80,6 @@ public class UserController {
     }
 
     /**
-     * Submit an assignment to a course
-     * @param student Student who is submitting
-     * @param courseID Course being submitted to
-     * @param assignmentID Assignment being submitted
-     * @param courseSubmission Submission
-     */
-    public void submitAssignment(Student student, int courseID, int assignmentID, String courseSubmission) {
-        System.out.println("Passing through User.UserController.submitAssignment()...");
-        student.submitAssignment(assignmentID, courseSubmission);
-        courseCtrl.submitAssignment(student.getUserID(), courseID, assignmentID, courseSubmission);
-    }
-
-    /**
      * View grades
      * @param student Student whose grades are being viewed
      */

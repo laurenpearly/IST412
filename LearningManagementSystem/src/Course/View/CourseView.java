@@ -99,7 +99,7 @@ public class CourseView {
             JButton submit = new JButton("Submit Assignment");
             submit.addActionListener(event -> {
                 try {
-                    subView.enterSubView(assignmentsFrame, user,
+                    subView.enterSubView(courseCntl, assignmentsFrame, user,
                             courseCntl.getOneAssignment(Integer.parseInt(data[assignmentsTable.getSelectedRow()][2])));
                 } catch (ArrayIndexOutOfBoundsException indexOOB) {
                     JOptionPane.showMessageDialog(assignmentsFrame, "Please choose an assignment to submit to.");

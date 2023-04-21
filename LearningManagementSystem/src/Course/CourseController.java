@@ -57,12 +57,12 @@ public class CourseController {
             if (course.getCourseID() == courseID) {
                 course.enroll(userID);
                 System.out.println("Student successfully enrolled!");
-                //System.out.println("Student successfully enrolled! " + course.getTeachingTeamList().get(userID));
             }
         }
     }
 
-    public void submitAssignment(int userID, int courseID, int assignmentID, String courseSubmission) {
+    public boolean submitAssignment(User user, Assignment assignment, String submission) {
+        return assignment.submitAssignment(this, user, submission);
     }
 
     public void addCourse(Course course) {

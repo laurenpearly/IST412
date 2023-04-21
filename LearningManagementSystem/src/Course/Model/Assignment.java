@@ -1,5 +1,13 @@
 package Course.Model;
 
+import Course.CourseController;
+import User.Model.User;
+
+import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +50,18 @@ public class Assignment implements NavigationTab {
     }
 
     public Assignment() {
+    }
+
+    public boolean submitAssignment(CourseController courseCntl, User user, String submission) {
+        try(FileWriter fw = new FileWriter("src/Data/submissionList.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + submission);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     public int getAssignmentID() {
