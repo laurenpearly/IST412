@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Authentication {
 
-    private static final String FILENAME = "src/Authentication/logins.txt";
+    private static final String FILENAME = "LearningManagementSystem/src/Authentication/logins.txt";
 
     //singleton object
     private static Authentication obj;

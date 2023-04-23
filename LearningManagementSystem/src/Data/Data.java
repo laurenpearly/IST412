@@ -39,7 +39,7 @@ public class Data {
     }
 
     private void createCourseObjects() {
-        final String FILENAME = "src/Data/courseList.txt";
+        final String FILENAME = "LearningManagementSystem/src/Data/courseList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -53,7 +53,7 @@ public class Data {
     }
 
     private void createAssignmentObjects() {
-        final String FILENAME = "src/Data/assignmentList.txt";
+        final String FILENAME = "LearningManagementSystem/src/Data/assignmentList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -66,6 +66,21 @@ public class Data {
             e.printStackTrace();
         }
     }
+
+//    private void createGradedAssignmentObjects() {
+//        final String FILENAME = "LearningManagementSystem/src/Data/gradedList.txt";
+//        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+//            String line;
+//            while((line = br.readLine()) != null) {
+//                String[] gradedAssignment = line.split(":");
+//                Assignment assignmentObj = new Assignment(Integer.parseInt(gradedAssignment[0]),gradedAssignment[1],
+//                        gradedAssignment[2],Integer.parseInt(gradedAssignment[3]));
+//                courseCntl.addAssignment(assignmentObj);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public Student getStudent() {
         return student;

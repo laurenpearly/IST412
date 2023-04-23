@@ -64,6 +64,17 @@ public class Assignment implements NavigationTab {
         }
     }
 
+    public boolean gradeAssignment(CourseController courseCntl, User user, Double grade) {
+        try (FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/gradedList.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
+            out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + grade);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
     public int getAssignmentID() {
         return assignmentID;
     }
