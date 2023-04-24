@@ -28,21 +28,6 @@ public class CourseView {
     }
 
     /**
-     * Given the assignment ID, shows the name, details, and ID of the course it is assigned to.
-     * @param assignmentID The ID given to the Assignment.
-     * @param assignmentName Name given to the Assignment.
-     * @param assignmentDetails Details for the Assignment.
-     * @param courseID The ID of the Course the Assignment is assigned to.
-     */
-    public void viewAssignment(int assignmentID, String assignmentName, String assignmentDetails, int courseID) {
-        System.out.println("Output from CourseView");
-        System.out.println("Assignment ID: " + assignmentID);
-        System.out.println("Assignment Name: " + assignmentName);
-        System.out.println("Assignment Details: " + assignmentDetails);
-        System.out.println("Course ID: " + courseID);
-    }
-
-    /**
      * Displays course and its info.
      * @param user User courses are being shown for
      * @param userFrame starting point to orient GUI elements

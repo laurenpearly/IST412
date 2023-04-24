@@ -3,6 +3,7 @@ package Course;
 import Course.Model.Assignment;
 import Course.Model.Course;
 import Course.View.CourseView;
+import Course.View.CreateView;
 import User.Model.User;
 
 import javax.swing.*;
@@ -12,14 +13,16 @@ public class CourseController {
     ArrayList<Course> courses;
     ArrayList<Assignment> assignments;
     CourseView view;
+    CreateView create;
 
     /**
      * Constructor for Controller
      */
     public CourseController() {
-        courses = new ArrayList<>();
-        assignments = new ArrayList<>();
+        this.courses = new ArrayList<>();
+        this.assignments = new ArrayList<>();
         this.view = new CourseView(this);
+        this.create = new CreateView(this);
     }
 
     /**
@@ -67,6 +70,19 @@ public class CourseController {
 
     public boolean gradeAssignment(User user, Assignment assignment, double grade) {
         return assignment.gradeAssignment(this, user, grade);
+    }
+
+    public void createCourse(JFrame userFrame) {
+        create.createCourse(userFrame);
+    }
+
+    public boolean writeCourse(int id, String name) {
+        Course course = new Course(id, name);
+        if(course.writeCourse()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void addCourse(Course course) {

@@ -3,6 +3,10 @@ package Course.Model;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.*;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -57,6 +61,19 @@ public class Course extends Observable implements NavigationTab{
             }
         }
         System.out.println("Output from Course.Model.Course.enroll(): userID: " + userID);
+    }
+
+    public boolean writeCourse() {
+        try(FileWriter fw = new FileWriter("src/Data/courseList.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(this.courseID + ":" + this.courseName);
+            fw.append(System.lineSeparator());
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     public int getCourseID() {

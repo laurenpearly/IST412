@@ -40,6 +40,14 @@ public class UserView {
         });
         viewUserPanel.add(courses);
 
+        if(user.getUserType() == 2) {
+            JButton createCourse = new JButton("Create Course");
+            createCourse.addActionListener(event -> {
+                cntl.createCourse(userFrame);
+            });
+            viewUserPanel.add(createCourse);
+        }
+
         userFrame.add(viewUserPanel);
     }
 

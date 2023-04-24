@@ -35,15 +35,14 @@ public class Data {
         student.addUserCourses(24);
         student.addUserCourses(33);
         instructor.addUserCourses(24);
+        instructor.addUserCourses(44);
         instructor.addUserCourses(33);
         teachingTeam.addUserCourses(24);
         teachingTeam.addUserCourses(33);
-        //FIXcourse.getTeachingTeamList().add(teachingTeam);
-        //FIXcourse.getTeachingTeamList().add(instructor);
     }
 
     private void createCourseObjects() {
-        final String FILENAME = "LearningManagementSystem/src/Data/courseList.txt";
+        final String FILENAME = "src/Data/courseList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -57,7 +56,7 @@ public class Data {
     }
 
     private void createAssignmentObjects() {
-        final String FILENAME = "LearningManagementSystem/src/Data/assignmentList.txt";
+        final String FILENAME = "src/Data/assignmentList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {

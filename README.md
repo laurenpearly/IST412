@@ -5,6 +5,18 @@ Lauren - lmp5874
 Zac - zmh5199  
 Logan - ljk5424
 
+## NOTE
+
+**Currently complete use cases:**
+- Authentication
+- View Courses/Assignments
+- Submit Assignment
+- Grade Assignment
+
+**In progress use cases:**
+- Create Courses/Assignments
+- View Grades
+
 ## Logins
 
 - **Student:** username: student, password: stu

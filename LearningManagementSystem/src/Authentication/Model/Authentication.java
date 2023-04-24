@@ -1,11 +1,10 @@
 package Authentication.Model;
 
-import javax.swing.*;
 import java.io.*;
 
 public class Authentication {
 
-    private static final String FILENAME = "LearningManagementSystem/src/Authentication/logins.txt";
+    private static final String FILENAME = "src/Authentication/logins.txt";
 
     //singleton object
     private static Authentication obj;
@@ -57,7 +56,7 @@ public class Authentication {
     }
 
     public void registerUser(String username, String password) throws IOException {
-        FileWriter fileWriter = new FileWriter("/src/Authentication/logins.txt", true);
+        FileWriter fileWriter = new FileWriter("src/Authentication/logins.txt", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         bufferedWriter.newLine();
         bufferedWriter.write(username + ":" + password);

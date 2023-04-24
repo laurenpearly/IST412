@@ -111,12 +111,10 @@ public class UserController {
 
     /**
      * Creates a course
-     * @param instructor Instructor creating the course
-     * @param course Course being made
+     * @param userFrame to anchor other jframes
      */
-    public void createCourse(Instructor instructor, Course course) {
-        System.out.println("Passing through User.UserController.createCourse()...");
-        instructor.createCourse(course);
+    public void createCourse(JFrame userFrame) {
+        courseCtrl.createCourse(userFrame);
     }
 
     /**
