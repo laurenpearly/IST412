@@ -34,6 +34,10 @@ public class Data {
 
         student.addUserCourses(24);
         student.addUserCourses(33);
+        instructor.addUserCourses(24);
+        instructor.addUserCourses(33);
+        teachingTeam.addUserCourses(24);
+        teachingTeam.addUserCourses(33);
         //FIXcourse.getTeachingTeamList().add(teachingTeam);
         //FIXcourse.getTeachingTeamList().add(instructor);
     }
