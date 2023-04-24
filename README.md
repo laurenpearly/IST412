@@ -38,8 +38,10 @@ Zac:
   - Implemented the grade assignments use case.
 Logan:
   - IDE: VSCode
-  - 
-
+  - Completed the unfinished and then polished both grading assignment and submit assignment use cases.
+Tom:
+  - IDE: VSCode
+  - Finalized authentication use case, helped implement functionality to the course class(es) and added additional grading logic.
 
 ## Design Patterns
 
