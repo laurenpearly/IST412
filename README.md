@@ -36,6 +36,9 @@ Lauren:
 Zac:
   - IDE: InteliJ
   - Implemented the grade assignments use case.
+Logan:
+  - IDE: VSCode
+  - 
 
 
 ## Design Patterns

@@ -1,20 +1,51 @@
 package Course.View;
 
-import Course.Model.Course;
-import Course.Model.GradeObserver;
-import User.UserView;
+import Course.CourseController;
+import Course.Model.Assignment;
+import User.Model.User;
 
-public class GradeView implements GradeObserver {
-    UserView userView;
-    Course course;
+import javax.swing.*;
 
-    public GradeView(UserView userView, Course course){
-        this.userView = userView;
-        this.course = course;
-        course.addObserver(this);
+public class GradeView {
+
+    JFrame enterSubFrame;
+
+    public GradeView(CourseView courseView) {
+
     }
 
-    public void updateGrades(){
-        userView.viewGrade(course.getCourseName(), course.getGrade());
+    public void enterGradeView(CourseController courseCntl, JFrame assignmentsFrame, User user, Assignment assignment) {
+        enterSubFrame = new JFrame(assignment.getAssignmentName() + " Submission");
+        enterSubFrame.setVisible(true);
+        enterSubFrame.setSize(800, 400);
+        enterSubFrame.setLocationRelativeTo(assignmentsFrame);
+        enterSubFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel enterSubPanel = new JPanel();
+
+        JLabel subLabel = new JLabel("Enter Grade/Comments:");
+        JTextArea submission = new JTextArea(20, 40);
+        submission.setLineWrap(true);
+        enterSubPanel.add(subLabel);
+        enterSubPanel.add(submission);
+
+        JButton submit = new JButton("Submit Grade/Comments");
+        submit.addActionListener(event -> {
+            String submissionString = submission.getText();
+            if(courseCntl.submitAssignment(user, assignment, submissionString)) {
+                JOptionPane.showMessageDialog(enterSubFrame, "Assignment successfully Graded!");
+                enterSubFrame.dispose();
+            } else {
+                JOptionPane.showMessageDialog(enterSubFrame, "Error, could not submit assignment.");
+            }
+        });
+        enterSubPanel.add(submit);
+
+        JButton back = new JButton("Back");
+        back.addActionListener(event -> {
+            enterSubFrame.dispose();
+        });
+        enterSubPanel.add(back);
+
+        enterSubFrame.add(enterSubPanel);
     }
 }

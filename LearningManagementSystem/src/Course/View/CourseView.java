@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class CourseView {
 
     SubmissionView subView;
+    GradeView gradeView;
     JFrame courseFrame;
     JFrame assignmentsFrame;
     CourseController courseCntl;
@@ -23,6 +24,7 @@ public class CourseView {
     public CourseView(CourseController courseCntl) {
         this.courseCntl = courseCntl;
         this.subView = new SubmissionView(this);
+        this.gradeView = new GradeView(this);
     }
 
     /**
@@ -108,6 +110,14 @@ public class CourseView {
             assignmentPanel.add(submit);
         } else {
             JButton grade = new JButton("Grade Assignment");
+            grade.addActionListener(event -> {
+                try{
+                    gradeView.enterGradeView(courseCntl, assignmentsFrame, user,
+                    courseCntl.getOneAssignment(Integer.parseInt(data[assignmentsTable.getSelectedRow()][2])));
+            }
+            catch (ArrayIndexOutOfBoundsException indexOOB) {
+                JOptionPane.showMessageDialog(assignmentsFrame, "Please choose an assignment to grade.");}
+            });
             assignmentPanel.add(grade);
         }
         assignmentPanel.add(back);
