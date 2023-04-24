@@ -30,15 +30,22 @@ Logan - ljk5424
 
 ## IDEs and Use Case Implementations
 
+Erik:
+  - IDE: InteliJ with version control using GitHub
+  - Implemented refactoring plan and Submit Assignment use case which allows a student to create a submission for a chosen assignment.
+
 Lauren:
   - IDE: InteliJ with version control using GitHub
   - implemented the grade use case which allows assignments to be graded and updated for users to view and staff to edit/add
+
 Zac:
   - IDE: InteliJ
   - Implemented the grade assignments use case.
+
 Logan:
   - IDE: VSCode
   - Completed the unfinished and then polished both grading assignment and submit assignment use cases.
+
 Tom:
   - IDE: VSCode
   - Finalized authentication use case, helped implement functionality to the course class(es) and added additional grading logic.
