@@ -28,6 +28,13 @@ Logan - ljk5424
 - **User.UserController.viewAssignment():** Removed because no longer needed, eliminating the message chain.
 - **NOTE:** User.UserController.viewCourses() still includes a small message chain, because objects needed to get passed from UserView to CourseView and there was no way to make it more concise.
 
+## IDE and Use Cases
+
+Lauren:
+IDE: InteliJ with version control using GitHub
+  - implemented the grade use case which allows assignments to be graded and updated for users to view and staff to edit/add
+
+
 ## Design Patterns
 
 ### Object-Oriented Design Patterns
