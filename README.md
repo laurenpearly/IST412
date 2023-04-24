@@ -33,6 +33,9 @@ Logan - ljk5424
 Lauren:
   - IDE: InteliJ with version control using GitHub
   - implemented the grade use case which allows assignments to be graded and updated for users to view and staff to edit/add
+Zac:
+  - IDE: InteliJ
+  - Implemented the grade assignments use case.
 
 
 ## Design Patterns
