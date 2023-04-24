@@ -7,6 +7,8 @@ Logan - ljk5424
 
 ## NOTE
 
+Filepath for all persistent data located in LearningManagementSystem/src/Data/. For some users full filepath is needed, other users need to only be src/Data/ to work.
+
 **Currently complete use cases:**
 - Authentication
 - View Courses/Assignments
