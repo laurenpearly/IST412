@@ -65,7 +65,7 @@ public class CourseController {
         return assignment.submitAssignment(this, user, submission);
     }
 
-    public boolean gradeAssigment(User user, Assignment assignment, double grade) {
+    public boolean gradeAssignment(User user, Assignment assignment, double grade) {
         return assignment.gradeAssignment(this, user, grade);
     }
 

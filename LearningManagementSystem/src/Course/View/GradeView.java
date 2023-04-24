@@ -22,22 +22,23 @@ public class GradeView {
         enterSubFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JPanel enterSubPanel = new JPanel();
 
-        JLabel subLabel = new JLabel("Enter Grade/Comments:");
+        JLabel subLabel = new JLabel("Enter Grade (Numbered Score Only):");
         JTextArea submission = new JTextArea(20, 40);
         submission.setLineWrap(true);
         enterSubPanel.add(subLabel);
         enterSubPanel.add(submission);
 
-        JButton submit = new JButton("Submit Grade/Comments");
+        JButton submit = new JButton("Submit Grade");
         submit.addActionListener(event -> {
-            String submissionString = submission.getText();
-            if(courseCntl.submitAssignment(user, assignment, submissionString)) {
+            Double grade = Double.parseDouble(submission.getText());
+            if(courseCntl.gradeAssignment(user, assignment, grade)) {
                 JOptionPane.showMessageDialog(enterSubFrame, "Assignment successfully Graded!");
                 enterSubFrame.dispose();
             } else {
                 JOptionPane.showMessageDialog(enterSubFrame, "Error, could not submit assignment.");
             }
         });
+
         enterSubPanel.add(submit);
 
         JButton back = new JButton("Back");
