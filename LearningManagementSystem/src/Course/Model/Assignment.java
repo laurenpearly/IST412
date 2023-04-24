@@ -53,11 +53,12 @@ public class Assignment implements NavigationTab {
     }
 
     public boolean submitAssignment(CourseController courseCntl, User user, String submission) {
-        try(FileWriter fw = new FileWriter("src/Data/submissionList.txt", true);
+        try(FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/submissionList.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
             out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + submission);
+            fw.append(System.lineSeparator());
             return true;
         } catch (IOException e) {
             return false;
@@ -69,6 +70,7 @@ public class Assignment implements NavigationTab {
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
             out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + grade);
+            fw.append(System.lineSeparator());
             return true;
         } catch (IOException e) {
             return false;
