@@ -1,10 +1,9 @@
 package User;
 
-import Course.Model.Course;
+import Data.Data;
 import User.Model.User;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class UserView {
 
@@ -24,7 +23,7 @@ public class UserView {
      * View user details.
      * @param user User being viewed
      */
-    public void viewUser(User user) {
+    public void viewUser(Data data, User user) {
         System.out.println("Output from User.UserView.viewUser(): userFirstName: " + user.getUserFirstName());
         userFrame = new JFrame("View User");
         userFrame.setVisible(true);
@@ -43,10 +42,16 @@ public class UserView {
         if(user.getUserType() == 2) {
             JButton createCourse = new JButton("Create Course");
             createCourse.addActionListener(event -> {
-                cntl.createCourse(userFrame);
+                cntl.createCourse(data, userFrame);
             });
             viewUserPanel.add(createCourse);
         }
+
+        JButton back = new JButton("Back");
+        back.addActionListener(event -> {
+            userFrame.dispose();
+        });
+        viewUserPanel.add(back);
 
         userFrame.add(viewUserPanel);
     }
@@ -57,19 +62,5 @@ public class UserView {
      */
     public void viewMessages(int userID) {
         System.out.println("Output from User.UserView.viewMessages(): userID: " + userID);
-    }
-
-    /**
-     * View grades
-     * @param userID ID of user
-     * @param userCourses Courses a user is enrolled in
-     * @param grades Grades for the courses
-     */
-    public void viewGrades(int userID, ArrayList<Course> userCourses, String grades) {
-        System.out.println("Output from User.UserView.viewGrades(): userID: " + userID + " grades: " + grades);
-    }
-
-    public void viewGrade(String courseName, Double grade) {
-        System.out.println("Output from updated User.UserView.viewGrade(): Course Name: " + courseName + " grade: " + grade);
     }
 }

@@ -4,6 +4,7 @@ import Course.Model.Assignment;
 import Course.Model.Course;
 import Course.View.CourseView;
 import Course.View.CreateView;
+import Data.Data;
 import User.Model.User;
 
 import javax.swing.*;
@@ -30,9 +31,9 @@ public class CourseController {
      * @param user User courses being shown for
      * @param userFrame starting point for GUI
      */
-    public void viewCourses(User user, JFrame userFrame) {
+    public void viewCourses(Data data, User user, JFrame userFrame) {
         ArrayList<Course> userCourses = getCourses(user.getUserCourses());
-        view.viewCourse(user, userFrame, userCourses);
+        view.viewCourse(data, user, userFrame, userCourses);
     }
 
     /**
@@ -50,35 +51,34 @@ public class CourseController {
         }
     }
 
-    /**
-     * Enrolls student to course.
-     * @param userID ID of user to be added.
-     * @param courseID ID of course to be added to.
-     */
-    public void enroll(int userID, int courseID) {
-        for (Course course : courses) {
-            if (course.getCourseID() == courseID) {
-                course.enroll(userID);
-                System.out.println("Student successfully enrolled!");
-            }
+    public boolean submitAssignment(Data data, User user, Assignment assignment, String submission) {
+        return assignment.submitAssignment(data, user, submission);
+    }
+
+    public boolean gradeAssignment(Data data, User user, Assignment assignment, double grade) {
+        return assignment.gradeAssignment(data, this, user, grade);
+    }
+
+    public void createCourse(Data data, JFrame userFrame) {
+        create.createCourse(data, userFrame);
+    }
+
+    public void createAssignment(Data data, Course course, JFrame assignmentFrame) {
+        create.createAssignment(data, course, assignmentFrame);
+    }
+
+    public boolean writeCourse(Data data, int id, String name) {
+        Course course = new Course(id, name);
+        if(course.writeCourse(data)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public boolean submitAssignment(User user, Assignment assignment, String submission) {
-        return assignment.submitAssignment(this, user, submission);
-    }
-
-    public boolean gradeAssignment(User user, Assignment assignment, double grade) {
-        return assignment.gradeAssignment(this, user, grade);
-    }
-
-    public void createCourse(JFrame userFrame) {
-        create.createCourse(userFrame);
-    }
-
-    public boolean writeCourse(int id, String name) {
-        Course course = new Course(id, name);
-        if(course.writeCourse()) {
+    public boolean writeAssignment(Data data, int id, String name, String details, int courseID) {
+        Assignment assignment = new Assignment(id, name, details, courseID);
+        if(assignment.writeAssignment(data)) {
             return true;
         } else {
             return false;

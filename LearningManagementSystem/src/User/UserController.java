@@ -1,24 +1,17 @@
 package User;
 
 import Course.CourseController;
-import Course.Model.Assignment;
-import Course.Model.Course;
 import Data.Data;
 import Message.MessageController;
-import User.Model.Student.Student;
-import User.Model.TeachingTeam.Instructor;
-import User.Model.TeachingTeam.TeachingTeam;
 import User.Model.User;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class UserController {
     UserView userView;
     Data data;
     CourseController courseCtrl;
     MessageController messageCtrl;
-    ArrayList<Student> studentList;
 
     /**
      * Constructor for Controller
@@ -28,16 +21,15 @@ public class UserController {
         courseCtrl = data.getCourseCntl();
         messageCtrl = new MessageController();
         userView = new UserView(this);
-        studentList = new ArrayList<Student>();
     }
 
     /**
      * View user details.
      * @param user User being viewed.
      */
-    public void viewUser(User user) {
+    public void viewUser(Data data, User user) {
         System.out.println("Passing through UserController.viewUser()...");
-        userView.viewUser(user);
+        userView.viewUser(data, user);
     }
 
     /**
@@ -46,7 +38,7 @@ public class UserController {
      */
     public void viewCourses(User user, JFrame userFrame) {
         System.out.println("Passing through UserController.viewCourses()...");
-        courseCtrl.viewCourses(user, userFrame);
+        courseCtrl.viewCourses(data, user, userFrame);
     }
 
     /**
@@ -59,71 +51,10 @@ public class UserController {
     }
 
     /**
-     * User logs in.
-     * @param userLoginName Username.
-     * @param userPassword Password.
-     */
-    public void logIn(String userLoginName, String userPassword) {
-        System.out.println("Passing through UserController.logIn()...");
-        //authCtrl.authenticate(userLoginName, userPassword);
-    }
-
-    /**
-     * Enroll in a course
-     * @param student Student to enroll
-     * @param courseID ID of course to enroll in
-     */
-    public void enroll(Student student, int courseID) {
-        System.out.println("Passing through UserController.enroll()...");
-        student.enroll(courseID);
-        courseCtrl.enroll(student.getUserID(), courseID);
-    }
-
-    /**
-     * View grades
-     * @param student Student whose grades are being viewed
-     */
-    public void viewGrades(Student student) {
-        System.out.println("Passing through User.UserController.viewGrades()...");
-        //userView.viewGrades(student.getUserID(), student.getUserCourses(), student.getGrades());
-    }
-
-    /**
-     * Used to assign a user to teach a course
-     * @param teachingTeam TeachingTeam person teaching the course
-     * @param courseID ID of course to be taught
-     */
-    public void teachCourse(TeachingTeam teachingTeam, int courseID) {
-        System.out.println("Passing through User.UserController.teachCourse()...");
-        teachingTeam.teachCourse(courseID);
-    }
-
-    /**
-     * Grade assignments for a course
-     * @param teachingTeam User that is the grader
-     * @param courseID ID of course to grade
-     * @param assignmentID Assignment being graded
-     */
-    public void gradeAssignment(TeachingTeam teachingTeam, int courseID, int assignmentID) {
-        System.out.println("Passing through User.UserController.gradeAssignment()...");
-        teachingTeam.gradeAssignment(courseID, assignmentID);
-    }
-
-    /**
      * Creates a course
      * @param userFrame to anchor other jframes
      */
-    public void createCourse(JFrame userFrame) {
-        courseCtrl.createCourse(userFrame);
-    }
-
-    /**
-     * Creates an assignment for a course
-     * @param instructor Instructor creating the assignment
-     * @param assignment Assignment being made
-     */
-    public void createAssignment(Instructor instructor, Assignment assignment) {
-        System.out.println("Passing through User.UserController.createAssignment()...");
-        instructor.createAssignment(assignment);
+    public void createCourse(Data data, JFrame userFrame) {
+        courseCtrl.createCourse(data, userFrame);
     }
 }

@@ -2,6 +2,7 @@ package Course.View;
 
 import Course.CourseController;
 import Course.Model.Assignment;
+import Data.Data;
 import User.Model.User;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class SubmissionView {
 
     }
 
-    public void enterSubView(CourseController courseCntl, JFrame assignmentsFrame, User user, Assignment assignment) {
+    public void enterSubView(Data data, CourseController courseCntl, JFrame assignmentsFrame, User user, Assignment assignment) {
         enterSubFrame = new JFrame(assignment.getAssignmentName() + " Submission");
         enterSubFrame.setVisible(true);
         enterSubFrame.setSize(800, 400);
@@ -31,7 +32,7 @@ public class SubmissionView {
         JButton submit = new JButton("Submit Assignment");
         submit.addActionListener(event -> {
             String submissionString = submission.getText();
-            if(courseCntl.submitAssignment(user, assignment, submissionString)) {
+            if(courseCntl.submitAssignment(data, user, assignment, submissionString)) {
                 JOptionPane.showMessageDialog(enterSubFrame, "Assignment successfully submitted!");
                 enterSubFrame.dispose();
             } else {

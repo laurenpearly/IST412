@@ -1,5 +1,6 @@
 package Course.Model;
 
+import Data.Data;
 import User.Model.Student.Student;
 import User.Model.TeachingTeam.*;
 
@@ -63,13 +64,14 @@ public class Course extends Observable implements NavigationTab{
         System.out.println("Output from Course.Model.Course.enroll(): userID: " + userID);
     }
 
-    public boolean writeCourse() {
+    public boolean writeCourse(Data data) {
         try(FileWriter fw = new FileWriter("src/Data/courseList.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
             out.println(this.courseID + ":" + this.courseName);
             fw.append(System.lineSeparator());
+            data.createCourseObjects();
             return true;
         } catch (IOException e) {
             return false;

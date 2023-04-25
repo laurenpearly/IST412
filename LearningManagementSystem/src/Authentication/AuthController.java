@@ -39,15 +39,15 @@ public class AuthController {
         data = new Data();
         switch (username) {
             case "student":
-                userCntl.viewUser(data.getStudent());
+                userCntl.viewUser(data, data.getStudent());
                 System.out.println("student");
                 break;
             case "team":
-                userCntl.viewUser(data.getTeachingTeam());
+                userCntl.viewUser(data, data.getTeachingTeam());
                 System.out.println("teaching team");
                 break;
             case "instructor":
-                userCntl.viewUser(data.getInstructor());
+                userCntl.viewUser(data, data.getInstructor());
                 System.out.println("instructor");
                 break;
         }

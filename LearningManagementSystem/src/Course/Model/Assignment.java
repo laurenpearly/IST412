@@ -1,9 +1,9 @@
 package Course.Model;
 
 import Course.CourseController;
+import Data.Data;
 import User.Model.User;
 
-import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -52,25 +52,41 @@ public class Assignment implements NavigationTab {
     public Assignment() {
     }
 
-    public boolean submitAssignment(CourseController courseCntl, User user, String submission) {
-        try(FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/submissionList.txt", true);
+    public boolean submitAssignment(Data data, User user, String submission) {
+        try(FileWriter fw = new FileWriter("src/Data/submissionList.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
             out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + submission);
             fw.append(System.lineSeparator());
+            //data.createSubmissionObjects();
             return true;
         } catch (IOException e) {
             return false;
         }
     }
 
-    public boolean gradeAssignment(CourseController courseCntl, User user, Double grade) {
-        try (FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/gradedList.txt", true);
+    public boolean gradeAssignment(Data data, CourseController courseCntl, User user, Double grade) {
+        try (FileWriter fw = new FileWriter("src/Data/gradedList.txt", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
             out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + grade);
             fw.append(System.lineSeparator());
+            //data.createGradedAssignmentObjects();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    public boolean writeAssignment(Data data) {
+        try(FileWriter fw = new FileWriter("src/Data/assignmentList.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(this.assignmentID + ":" + this.assignmentName + ":" + this.assignmentDetails + ":" + this.courseID);
+            fw.append(System.lineSeparator());
+            data.createAssignmentObjects();
             return true;
         } catch (IOException e) {
             return false;

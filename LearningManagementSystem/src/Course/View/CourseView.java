@@ -3,6 +3,7 @@ package Course.View;
 import Course.CourseController;
 import Course.Model.Assignment;
 import Course.Model.Course;
+import Data.Data;
 import User.Model.User;
 
 import javax.swing.*;
@@ -33,7 +34,7 @@ public class CourseView {
      * @param userFrame starting point to orient GUI elements
      * @param userCourses list of user courses
      */
-    public void viewCourse(User user, JFrame userFrame, ArrayList<Course> userCourses) {
+    public void viewCourse(Data data, User user, JFrame userFrame, ArrayList<Course> userCourses) {
         System.out.println("Output from CourseView");
         courseFrame = new JFrame("Courses");
         courseFrame.setVisible(true);
@@ -44,32 +45,38 @@ public class CourseView {
         for (Course course : userCourses) {
             JButton btn = new JButton(course.getCourseName());
             btn.addActionListener(event -> {
-                viewAssignments(user, course, courseCntl.getAssignments(course.getCourseID()));
+                viewAssignments(data, user, course, courseCntl.getAssignments(course.getCourseID()));
             });
             courseButtons.add(btn);
         }
+        JButton back = new JButton("Back");
+        back.addActionListener(event -> {
+            courseFrame.dispose();
+        });
+        courseButtons.add(back);
+
         courseFrame.add(courseButtons);
     }
 
-    public void viewAssignments(User user, Course course, ArrayList<Assignment> userAssignments) {
+    public void viewAssignments(Data data, User user, Course course, ArrayList<Assignment> userAssignments) {
         assignmentsFrame = new JFrame(course.getCourseName() + " Assignments");
         assignmentsFrame.setVisible(true);
-        assignmentsFrame.setSize(800, 400);
+        assignmentsFrame.setSize(900, 400);
         assignmentsFrame.setLocationRelativeTo(courseFrame);
         assignmentsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JPanel assignmentPanel = new JPanel();
 
         String headers[] = { "Name", "Description"};
-        String data[][] = new String[userAssignments.size()][3];
+        String assignmentList[][] = new String[userAssignments.size()][3];
 
         for (int i = 0; i < userAssignments.size(); i ++){
-            data[i][0] = userAssignments.get(i).getAssignmentName();
-            data[i][1] = userAssignments.get(i).getAssignmentDetails();
-            data[i][2] = Integer.toString(userAssignments.get(i).getAssignmentID());
+            assignmentList[i][0] = userAssignments.get(i).getAssignmentName();
+            assignmentList[i][1] = userAssignments.get(i).getAssignmentDetails();
+            assignmentList[i][2] = Integer.toString(userAssignments.get(i).getAssignmentID());
         }
 
         JTable assignmentsTable = new JTable();
-        DefaultTableModel dtm = new DefaultTableModel(data, headers);
+        DefaultTableModel dtm = new DefaultTableModel(assignmentList, headers);
         assignmentsTable.setModel(dtm);
 
         UIDefaults defaults = UIManager.getLookAndFeelDefaults();
@@ -86,19 +93,25 @@ public class CourseView {
             JButton submit = new JButton("Submit Assignment");
             submit.addActionListener(event -> {
                 try {
-                    subView.enterSubView(courseCntl, assignmentsFrame, user,
-                            courseCntl.getOneAssignment(Integer.parseInt(data[assignmentsTable.getSelectedRow()][2])));
+                    subView.enterSubView(data, courseCntl, assignmentsFrame, user,
+                            courseCntl.getOneAssignment(Integer.parseInt(assignmentList[assignmentsTable.getSelectedRow()][2])));
                 } catch (ArrayIndexOutOfBoundsException indexOOB) {
                     JOptionPane.showMessageDialog(assignmentsFrame, "Please choose an assignment to submit to.");
                 }
             });
             assignmentPanel.add(submit);
         } else {
+            JButton create = new JButton("Create Assignment");
+            create.addActionListener(event -> {
+                courseCntl.createAssignment(data, course, assignmentsFrame);
+            });
+            assignmentPanel.add(create);
+
             JButton grade = new JButton("Grade Assignment");
             grade.addActionListener(event -> {
                 try{
-                    gradeView.enterGradeView(courseCntl, assignmentsFrame, user,
-                    courseCntl.getOneAssignment(Integer.parseInt(data[assignmentsTable.getSelectedRow()][2])));
+                    gradeView.enterGradeView(data, courseCntl, assignmentsFrame, user,
+                    courseCntl.getOneAssignment(Integer.parseInt(assignmentList[assignmentsTable.getSelectedRow()][2])));
             }
             catch (ArrayIndexOutOfBoundsException indexOOB) {
                 JOptionPane.showMessageDialog(assignmentsFrame, "Please choose an assignment to grade.");}
