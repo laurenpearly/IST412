@@ -9,21 +9,24 @@ Logan - ljk5424
 
 Filepath for all persistent data located in LearningManagementSystem/src/Data/. For some users full filepath is needed, other users need to only be src/Data/ to work.
 
-**Currently complete use cases:**
+**Complete use cases:**
 - Authentication
 - View Courses/Assignments
 - Submit Assignment
 - Grade Assignment
-
-**In progress use cases:**
 - Create Courses/Assignments
-- View Grades
 
 ## Logins
 
 - **Student:** username: student, password: stu
 - **Teaching Team:** username: team, password: team
 - **Instructor:** username: instructor, password: teach
+
+## M05-A01 - Final Project Implementation
+
+#### Erik:
+
+- Implemented Create Course/Assignment use case.
 
 ## M04-A03 - Two Implemented Use Cases with Clean, Refactored Code
 
@@ -42,25 +45,25 @@ Filepath for all persistent data located in LearningManagementSystem/src/Data/. 
 - **User.UserController.viewAssignment():** Removed because no longer needed, eliminating the message chain.
 - **NOTE:** User.UserController.viewCourses() still includes a small message chain, because objects needed to get passed from UserView to CourseView and there was no way to make it more concise.
 
-## IDEs and Use Case Implementations
+### IDEs and Use Case Implementations
 
-Erik:
+#### Erik:
   - IDE: InteliJ with version control using GitHub
   - Implemented refactoring plan and Submit Assignment use case which allows a student to create a submission for a chosen assignment.
 
-Lauren:
+#### Lauren:
   - IDE: InteliJ with version control using GitHub
   - implemented the grade use case which allows assignments to be graded and updated for users to view and staff to edit/add
 
-Zac:
+#### Zac:
   - IDE: InteliJ
   - Implemented the grade assignments use case.
 
-Logan:
+#### Logan:
   - IDE: VSCode
   - Completed the unfinished and then polished both grading assignment and submit assignment use cases.
 
-Tom:
+#### Tom:
   - IDE: VSCode
   - Finalized authentication use case, helped implement functionality to the course class(es) and added additional grading logic.
 
