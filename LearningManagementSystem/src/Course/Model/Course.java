@@ -65,7 +65,7 @@ public class Course extends Observable implements NavigationTab{
     }
 
     public boolean writeCourse(Data data) {
-        try(FileWriter fw = new FileWriter("src/Data/courseList.txt", true);
+        try(FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/courseList.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {

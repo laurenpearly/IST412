@@ -53,7 +53,7 @@ public class Assignment implements NavigationTab {
     }
 
     public boolean submitAssignment(Data data, User user, String submission) {
-        try(FileWriter fw = new FileWriter("src/Data/submissionList.txt", true);
+        try(FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/submissionList.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
@@ -67,7 +67,7 @@ public class Assignment implements NavigationTab {
     }
 
     public boolean gradeAssignment(Data data, CourseController courseCntl, User user, Double grade) {
-        try (FileWriter fw = new FileWriter("src/Data/gradedList.txt", true);
+        try (FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/gradedList.txt", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
             out.println(user.getUserID() + ":" + this.getAssignmentID() + ":" + grade);
@@ -80,7 +80,7 @@ public class Assignment implements NavigationTab {
     }
 
     public boolean writeAssignment(Data data) {
-        try(FileWriter fw = new FileWriter("src/Data/assignmentList.txt", true);
+        try(FileWriter fw = new FileWriter("LearningManagementSystem/src/Data/assignmentList.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {

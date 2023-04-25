@@ -42,7 +42,7 @@ public class Data {
     }
 
     public void createCourseObjects() {
-        final String FILENAME = "src/Data/courseList.txt";
+        final String FILENAME = "LearningManagementSystem/src/Data/courseList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -56,7 +56,7 @@ public class Data {
     }
 
     public void createAssignmentObjects() {
-        final String FILENAME = "src/Data/assignmentList.txt";
+        final String FILENAME = "LearningManagementSystem/src/Data/assignmentList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -71,7 +71,7 @@ public class Data {
     }
 
     /*private void createGradedAssignmentObjects() {
-        final String FILENAME = "src/Data/gradedList.txt";
+        final String FILENAME = "LearningManagementSystem/src/Data/gradedList.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while((line = br.readLine()) != null) {
